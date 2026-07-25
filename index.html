@@ -254,6 +254,18 @@
     font-size:12px;font-weight:800;display:grid;place-items:center}
   .reco .btns{margin-top:9px}
 
+  /* ===== 美食篩選 chip ===== */
+  .filterbar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 12px;
+    box-shadow:var(--shadow);margin-bottom:16px}
+  .filterrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .filterrow+.filterrow{margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+  .filterrow .flabel{font-size:11.5px;font-weight:800;color:var(--sub);flex:0 0 auto;margin-right:2px}
+  .chip-f{font-size:12px;font-weight:700;padding:6px 11px;border-radius:999px;cursor:pointer;
+    background:var(--bg);border:1px solid var(--line);color:var(--sub);transition:.15s;white-space:nowrap}
+  .chip-f:active{transform:scale(.96)}
+  .chip-f.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .filter-empty{font-size:13px;color:var(--sub);text-align:center;padding:24px 0;display:none}
+
   .secttl{display:flex;align-items:center;gap:9px;margin:0 0 13px}
   .secttl .ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:18px;
     background:var(--card);box-shadow:var(--shadow)}
@@ -331,7 +343,7 @@
 
   <div class="recap-card" id="recapCard" style="margin-top:12px">
     <h3>🎬 旅程回顧</h3>
-    <p>在<b>行程卡、美食、咖啡</b>任一店家按「📷 去過了·加照片」；臨時發現的店用下方「➕ 自由打卡」也能加！目前已收集 <b id="phcount">0</b> 張照片。</p>
+    <p>在<b>行程卡、美食、咖啡</b>任一店家按「📷 去過了·加照片」；臨時發現的店用下方「➕ 自由打卡」也能加！加照片時可<b>輸入時間</b>，回顧影片會<b>按時間排序</b>並顯示。目前已收集 <b id="phcount">0</b> 張照片。</p>
     <div class="rbtns">
       <button id="freeCheckin" style="background:#fff;color:#2563eb">➕ 自由打卡</button>
       <button id="playRecap">▶️ 播放回顧</button>
@@ -758,7 +770,13 @@
     <div class="secttl"><span class="ico">🍜</span><h2>美食口袋名單</h2></div>
     <p style="font-size:12.5px;color:var(--sub);margin:-4px 0 14px">依路線分區 · 以團體(8人)可入座、小孩友善為主 · ⚠️ 8 人含幼兒<b>務必提前訂位</b>並註明要桌椅席＋兒童椅</p>
 
-    <div class="subttl" style="color:var(--brand)">🥩 Day4 晚餐・燒肉（重頭戲・淺草）</div>
+    <div class="filterbar" id="eatFilter">
+      <div class="filterrow" id="eatRegionRow"><span class="flabel">區域</span></div>
+      <div class="filterrow" id="eatTypeRow"><span class="flabel">類型</span></div>
+    </div>
+    <div class="filter-empty" id="eatEmpty">這個組合沒有店家，換個條件看看 🙂</div>
+
+    <div class="subttl fgroup" data-region="東京" data-type="燒肉" style="color:var(--brand)">🥩 Day4 晚餐・燒肉（重頭戲・淺草）</div>
     <div class="reco-grid">
       <div class="reco">
         <div class="top"><div><h4>和牛焼肉 土古里 淺草店 <span class="rank">1</span></h4><div class="type">和牛燒肉 · 食べログ3.5+ · 晚套餐¥7,000起 · ✅可訂位</div></div></div>
@@ -782,7 +800,7 @@
       </div>
     </div>
 
-    <div class="subttl" style="color:#0891b2">🏯 小田原（D1、D3 晚餐 / D2 早上）</div>
+    <div class="subttl fgroup" data-region="小田原" data-type="和食" style="color:#0891b2">🏯 小田原（D1、D3 晚餐 / D2 早上）</div>
     <div class="reco-grid">
       <div class="reco">
         <div class="top"><div><h4>だるま料理店（だるま本店）<span class="rank" style="background:#0891b2">1</span></h4><div class="type">日本料理・天丼 · 食べログ3.49 · 座敷會席¥4,400起 · ✅可訂位</div></div></div>
@@ -801,7 +819,7 @@
       </div>
     </div>
 
-    <div class="subttl" style="color:#0369a1">⛩️ 箱根（D2 午餐・蘆之湖畔集中）</div>
+    <div class="subttl fgroup" data-region="箱根" data-type="和食" style="color:#0369a1">⛩️ 箱根（D2 午餐・蘆之湖畔集中）</div>
     <div class="reco-grid">
       <div class="reco">
         <div class="top"><div><h4>あしのこ茶屋 <span class="rank" style="background:#0369a1">1</span></h4><div class="type">和食・土鍋飯+おばんざい · 元箱根港步2分 · ¥2,500–3,500</div></div></div>
@@ -825,7 +843,7 @@
       </div>
     </div>
 
-    <div class="subttl" style="color:var(--sun)">🛍️ 御殿場 Outlet（D2 下午 · 全在同一園區）</div>
+    <div class="subttl fgroup" data-region="御殿場" data-type="西式" style="color:var(--sun)">🛍️ 御殿場 Outlet（D2 下午 · 全在同一園區）</div>
     <div class="reco-grid">
       <div class="reco">
         <div class="top"><div><h4>炭燒レストランさわやか（げんこつ漢堡排）<span class="rank" style="background:var(--sun)">★</span></h4><div class="type">靜岡名物漢堡排 · 食べログ3.60（區內第一）· 有兒童餐</div></div></div>
@@ -849,7 +867,7 @@
       </div>
     </div>
 
-    <div class="subttl" style="color:var(--fuji)">🗻 河口湖・忍野（D2 晚餐 / D3 午餐 · 富士山名物餺飥・烏龍・蕎麥）</div>
+    <div class="subttl fgroup" data-region="河口湖忍野" data-type="和食" style="color:var(--fuji)">🗻 河口湖・忍野（D2 晚餐 / D3 午餐 · 富士山名物餺飥・烏龍・蕎麥）</div>
     <div class="reco-grid">
       <div class="reco">
         <div class="top"><div><h4>ほうとう蔵 歩成 河口湖店 <span class="rank" style="background:var(--fuji)">1</span></h4><div class="type">餺飥得獎名店 · 食べログ高評 · ✅有個室可預約</div></div></div>
@@ -878,7 +896,7 @@
       </div>
     </div>
 
-    <div class="subttl" style="color:var(--sakura)">🍣 築地場外市場（D4 早餐 · 建議 7:00–10:00 到）</div>
+    <div class="subttl fgroup" data-region="東京" data-type="海鮮" style="color:var(--sakura)">🍣 築地場外市場（D4 早餐 · 建議 7:00–10:00 到）</div>
     <div class="note" style="margin:0 0 10px">市場守則：<b>禁邊走邊吃</b>（店前/店內用餐）、嬰兒車可寄「ぷらっと築地」案內所、<b>牽好小孩分散行動</b>。多數店<b>週三＋週日公休</b>、14:00–15:00 前收攤。</div>
     <div class="reco-grid">
       <div class="reco">
@@ -908,7 +926,7 @@
       </div>
     </div>
 
-    <div class="subttl" style="color:#7c3aed">🏮 淺草橋／淺草（住宿步行圈）＋ 原宿新宿</div>
+    <div class="subttl fgroup" data-region="東京" data-type="和食,燒肉" style="color:#7c3aed">🏮 淺草橋／淺草（住宿步行圈）＋ 原宿新宿</div>
     <div class="reco-grid">
       <div class="reco">
         <div class="top"><div><h4>水新菜館（淺草橋）<span class="rank" style="background:#7c3aed">1</span></h4><div class="type">町中華・勾芡炒麵 · 在地名店 · 午¥1,000級</div></div></div>
@@ -1382,6 +1400,44 @@
     });
   })();
 
+  // ===== 美食篩選（區域 + 類型）=====
+  (function(){
+    const groups = [...document.querySelectorAll('#eat .fgroup')].map(g=>({
+      ttl:g, grid:g.nextElementSibling,
+      region:g.dataset.region, types:(g.dataset.type||'').split(',').map(s=>s.trim()).filter(Boolean)
+    }));
+    if(!groups.length) return;
+    const regionRow=document.getElementById('eatRegionRow');
+    const typeRow=document.getElementById('eatTypeRow');
+    const empty=document.getElementById('eatEmpty');
+    const REGIONS=['小田原','箱根','御殿場','河口湖忍野','東京'];
+    const REGION_LABEL={'小田原':'小田原','箱根':'箱根','御殿場':'御殿場','河口湖忍野':'河口湖/忍野','東京':'東京'};
+    const TYPES=['燒肉','和食','海鮮','西式'];
+    let curRegion='全部', curType='全部';
+    function mkChip(text,row,onClick,on){ const b=document.createElement('button'); b.className='chip-f'+(on?' on':''); b.textContent=text; b.onclick=()=>onClick(b); row.appendChild(b); return b; }
+    function apply(){
+      let shown=0;
+      groups.forEach(g=>{
+        const okR = curRegion==='全部' || g.region===curRegion;
+        const okT = curType==='全部' || g.types.includes(curType);
+        const vis = okR && okT;
+        g.ttl.style.display = vis?'':'none';
+        if(g.grid) g.grid.style.display = vis?'':'none';
+        if(vis) shown++;
+      });
+      empty.style.display = shown?'none':'block';
+    }
+    // 區域列
+    const rChips=[];
+    rChips.push(mkChip('全部',regionRow,(b)=>{curRegion='全部';rChips.forEach(c=>c.classList.remove('on'));b.classList.add('on');apply();},true));
+    REGIONS.forEach(r=>rChips.push(mkChip(REGION_LABEL[r],regionRow,(b)=>{curRegion=r;rChips.forEach(c=>c.classList.remove('on'));b.classList.add('on');apply();})));
+    // 類型列
+    const tChips=[];
+    tChips.push(mkChip('全部',typeRow,(b)=>{curType='全部';tChips.forEach(c=>c.classList.remove('on'));b.classList.add('on');apply();},true));
+    TYPES.forEach(t=>tChips.push(mkChip(t,typeRow,(b)=>{curType=t;tChips.forEach(c=>c.classList.remove('on'));b.classList.add('on');apply();})));
+    apply();
+  })();
+
   // ===== Photos + Recap video =====
   (function(){
     const DB='tokyo-photos', STORE='photos'; let db=null;
@@ -1409,6 +1465,37 @@
     function titleOf(card){const h=card.querySelector('h3,h4');return h?h.textContent.trim().replace(/\s+/g,' '):'';}
     function keyOf(card,i){return (i+1)+'_'+titleOf(card).replace(/\s+/g,'').slice(0,24);}
 
+    // 該卡片屬於第幾天（day1..day5）→ 回傳天數 1..5，找不到 0
+    function dayOfCard(card){
+      const sec=card.closest('section.panel'); if(!sec) return 0;
+      const m=(sec.id||'').match(/day(\d)/); return m?parseInt(m[1],10):0;
+    }
+    // 把 "MM/DD HH:mm" 或 "HH:mm" 解析成排序用的數字（越小越前）；行程日 8/25=第1天
+    const TRIP_START_DAY=25; // 8月
+    function parseWhen(str){
+      if(!str) return null;
+      let mm, dd=null, hh=0, mi=0;
+      let m=str.match(/(\d{1,2})\s*[\/\-月]\s*(\d{1,2})[^\d]*(\d{1,2})?[:：]?(\d{2})?/);
+      if(m){ dd=parseInt(m[2],10); if(m[3]!=null){hh=parseInt(m[3],10);} if(m[4]!=null){mi=parseInt(m[4],10);} }
+      else { m=str.match(/(\d{1,2})[:：](\d{2})/); if(m){hh=parseInt(m[1],10);mi=parseInt(m[2],10);} else return null; }
+      const dayIdx = dd? (dd-TRIP_START_DAY+1) : 0; // 8/25→1
+      return dayIdx*100000 + hh*60 + mi;
+    }
+    // 卡片的預設排序鍵：天*100000 + 卡片時間分鐘（用先前 cardMinutes 的邏輯簡化版）
+    function cardSortKey(card){
+      const day=dayOfCard(card);
+      const t=card.querySelector('.time'); let min=12*60;
+      if(t){ const mt=t.textContent.match(/([0-2]?\d):([0-5]\d)/);
+        if(mt) min=parseInt(mt[1])*60+parseInt(mt[2]);
+        else { const x=t.textContent;
+          if(/清晨|一早|日出/.test(x))min=360; else if(/早餐/.test(x))min=450;
+          else if(/上午|午前/.test(x))min=540; else if(/中午|午餐|午前後/.test(x))min=720;
+          else if(/午後|下午/.test(x))min=840; else if(/傍晚|黃昏/.test(x))min=1020;
+          else if(/晚餐|晚上|夜|入住/.test(x))min=1140; }
+      }
+      return (day||9)*100000 + min;
+    }
+
     async function renderPhotos(card){
       const key=card.dataset.phkey;
       const photos=(await allPhotos()).filter(p=>p.key===key);
@@ -1434,22 +1521,29 @@
       freeBtn.addEventListener('click',()=>{
         const name=prompt('打卡地點名稱（例：Lawson富士山、路上發現的店）');
         if(!name||!name.trim())return;
-        pending={key:'free_'+name.trim().slice(0,30),label:name.trim(),cardEl:null};
+        // 自由打卡沒有排定時間 → 排序退到最後，鼓勵使用者填時間
+        pending={key:'free_'+name.trim().slice(0,30),label:name.trim(),cardEl:null,fallbackKey:9*100000+1439,defWhen:''};
         photoInput.click();
       });
     }
 
     photoInput.addEventListener('change', async()=>{
       const files=photoInput.files; if(!files||!files.length||!pending)return;
+      // 問拍攝時間（可留空）：回顧影片會依時間排序、並顯示時間
+      const defWhen = pending.defWhen || '';
+      const whenRaw = prompt('這些照片的時間？（讓回顧影片按時間排序）\n格式：MM/DD HH:mm，例 8/27 13:30\n留空則用行程排定時間', defWhen);
+      const when = (whenRaw===null? defWhen : whenRaw.trim());
+      const sortKey = parseWhen(when);
       let fail=0;
       for(const f of files){
         try{
           const data=await compress(f,1280);
-          await addPhoto({key:pending.key,label:pending.label,data:data});
+          await addPhoto({key:pending.key,label:pending.label,data:data,
+            when:when||null, sortKey:(sortKey!=null?sortKey:pending.fallbackKey)});
         }catch(e){ fail++; }
       }
       try{ if(pending.cardEl) await renderPhotos(pending.cardEl); await updateRecap(); }catch(e){}
-      if(pending && !pending.cardEl && !fail) alert('✅ 已為「'+pending.label+'」加入 '+files.length+' 張照片，會進回顧影片');
+      if(pending && !pending.cardEl && !fail) alert('✅ 已為「'+pending.label+'」加入 '+files.length+' 張照片'+(when?'（'+when+'）':'')+'，會進回顧影片');
       if(fail) alert(fail+' 張照片處理失敗，請再試一次');
       photoInput.value=''; pending=null;
     });
@@ -1460,7 +1554,7 @@
       const btn=document.createElement('button');
       btn.className='addph'; btn.innerHTML='📷 去過了 · 加照片';
       btn.onclick=(e)=>{e.stopPropagation();
-        pending={key:key,label:titleOf(card),cardEl:card}; photoInput.click();};
+        pending={key:key,label:titleOf(card),cardEl:card,fallbackKey:cardSortKey(card)}; photoInput.click();};
       card.appendChild(btn);
       if(db) renderPhotos(card);
     };
@@ -1473,7 +1567,7 @@
         const btn=document.createElement('button');
         btn.className='addph'; btn.innerHTML='📷 去過了 · 加照片';
         btn.onclick=(e)=>{e.stopPropagation();
-          pending={key:key,label:titleOf(card),cardEl:card}; photoInput.click();};
+          pending={key:key,label:titleOf(card),cardEl:card,fallbackKey:cardSortKey(card)}; photoInput.click();};
         card.appendChild(btn);
         renderPhotos(card);
       });
@@ -1490,12 +1584,14 @@
     function loadImg(src){return new Promise(r=>{const im=new Image();im.onload=()=>r(im);im.src=src;});}
     function drawCover(im){ const r=Math.max(W/im.width,H/im.height);
       const w=im.width*r,h=im.height*r; ctx.drawImage(im,(W-w)/2,(H-h)/2,w,h); }
-    function caption(text,alpha){
+    function caption(text,alpha,when){
       ctx.save(); ctx.globalAlpha=alpha;
-      const g=ctx.createLinearGradient(0,H-260,0,H); g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.75)');
-      ctx.fillStyle=g; ctx.fillRect(0,H-260,W,260);
-      ctx.fillStyle='#fff'; ctx.font='bold 52px "Noto Sans TC",sans-serif'; ctx.textAlign='center';
-      ctx.fillText(text.slice(0,18),W/2,H-90); ctx.restore();
+      const g=ctx.createLinearGradient(0,H-300,0,H); g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.78)');
+      ctx.fillStyle=g; ctx.fillRect(0,H-300,W,300);
+      ctx.textAlign='center';
+      if(when){ ctx.fillStyle='#ffd9e6'; ctx.font='600 34px "Noto Sans TC",sans-serif'; ctx.fillText('🕐 '+when,W/2,H-150); }
+      ctx.fillStyle='#fff'; ctx.font='bold 52px "Noto Sans TC",sans-serif';
+      ctx.fillText(text.slice(0,18),W/2,H-85); ctx.restore();
     }
     function titleCard(alpha){
       ctx.fillStyle='#1d4ed8'; ctx.fillRect(0,0,W,H);
@@ -1510,7 +1606,12 @@
       const photos=await allPhotos();
       if(!photos.length){ alert('還沒有照片喔！沿途先在景點按「📷 加照片」'); return false; }
       playing=true; player.classList.add('show');
-      const imgs=[]; for(const p of photos){ imgs.push({im:await loadImg(p.data),label:p.label}); }
+      // 依時間排序：有 sortKey 的用它，其餘排最後（保留加入順序）
+      const sorted=photos.slice().sort((a,b)=>{
+        const ka=(a.sortKey!=null?a.sortKey:Infinity), kb=(b.sortKey!=null?b.sortKey:Infinity);
+        if(ka!==kb) return ka-kb; return (a.id||0)-(b.id||0);
+      });
+      const imgs=[]; for(const p of sorted){ imgs.push({im:await loadImg(p.data),label:p.label,when:p.when}); }
       const PER=1800, FADE=400;
       if(recorder) recorder.start();
       const introMs=1600;
@@ -1521,7 +1622,7 @@
           drawCover(s.im);
           if(t<FADE){ctx.save();ctx.globalAlpha=1-t/FADE;ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);ctx.restore();}
           else if(t>PER-FADE){ctx.save();ctx.globalAlpha=1-(PER-t)/FADE;ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);ctx.restore();}
-          caption(s.label, t<FADE?t/FADE:1);
+          caption(s.label, t<FADE?t/FADE:1, s.when);
         });
         if(!playing) break;
       }
