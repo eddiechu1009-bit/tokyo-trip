@@ -61,6 +61,11 @@
   .daynav a.active,.daynav a:active{background:var(--brand);color:#fff;border-color:var(--brand)}
 
   section{margin-top:26px}
+  /* ===== Tab 分頁切換：預設隱藏，只顯示 .active 那一頁 ===== */
+  section.panel{display:none;animation:fadeIn .25s ease}
+  section.panel.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){ section.panel{animation:none} }
   .day-head{display:flex;align-items:center;gap:12px;margin:8px 0 16px}
   .day-pill{flex-shrink:0;width:54px;height:54px;border-radius:16px;display:grid;place-items:center;
     color:#fff;font-weight:900;line-height:1;text-align:center;box-shadow:var(--shadow)}
@@ -273,6 +278,7 @@
     <a href="#eat">美食<span class="d">口袋名單</span></a>
     <a href="#cafe">咖啡<span class="d">甜點</span></a>
     <a href="#kids">親子<span class="d">帶小孩</span></a>
+    <a href="#tips">提醒<span class="d">必看</span></a>
   </div>
 </nav>
 
@@ -295,7 +301,7 @@
   </div>
 
   <!-- ============ DAY 1 ============ -->
-  <section id="day1">
+  <section id="day1" class="panel active">
     <div class="day-head">
       <div class="day-pill d1"><span class="n">25</span><span class="m">TUE</span></div>
       <div><h2>台灣 → 羽田 → 小田原</h2><p>8/25（二）· 下午飛抵羽田，搭新幹線到小田原住一晚</p></div>
@@ -359,7 +365,7 @@
   </section>
 
   <!-- ============ DAY 2 ============ -->
-  <section id="day2">
+  <section id="day2" class="panel">
     <div class="day-head">
       <div class="day-pill d2"><span class="n">26</span><span class="m">WED</span></div>
       <div><h2>小田原城 · 箱根 · 御殿場 · 河口湖</h2><p>8/26（三）· 09:00 取車自駕，一路玩到河口湖住宿</p></div>
@@ -445,7 +451,7 @@
   </section>
 
   <!-- ============ DAY 3 ============ -->
-  <section id="day3">
+  <section id="day3" class="panel">
     <div class="day-head">
       <div class="day-pill d3"><span class="n">27</span><span class="m">THU</span></div>
       <div><h2>河口湖 · 忍野 · 還車 · 進東京</h2><p>8/27（四）· 玩富士山周邊，回小田原還車，新幹線進東京</p></div>
@@ -567,7 +573,7 @@
   </section>
 
   <!-- ============ DAY 4 ============ -->
-  <section id="day4">
+  <section id="day4" class="panel">
     <div class="day-head">
       <div class="day-pill d4"><span class="n">28</span><span class="m">FRI</span></div>
       <div><h2>東京市區一日</h2><p>8/28（五）· 水族館・築地・明治神宮・新宿・淺草，晚上一起吃燒肉</p></div>
@@ -668,7 +674,7 @@
   </section>
 
   <!-- ============ DAY 5 ============ -->
-  <section id="day5">
+  <section id="day5" class="panel">
     <div class="day-head">
       <div class="day-pill d5"><span class="n">29</span><span class="m">SAT</span></div>
       <div><h2>羽田 → 松山</h2><p>8/29（六）· 退房、前往羽田機場搭 ANA 回台</p></div>
@@ -709,7 +715,7 @@
   </section>
 
   <!-- ============ EAT ============ -->
-  <section id="eat">
+  <section id="eat" class="panel">
     <div class="secttl"><span class="ico">🍜</span><h2>美食口袋名單</h2></div>
     <p style="font-size:12.5px;color:var(--sub);margin:-4px 0 14px">依路線分區 · 以團體(8人)可入座、小孩友善為主 · ⚠️ 8 人含幼兒<b>務必提前訂位</b>並註明要桌椅席＋兒童椅</p>
 
@@ -894,7 +900,7 @@
   </section>
 
   <!-- ============ CAFE ============ -->
-  <section id="cafe">
+  <section id="cafe" class="panel">
     <div class="secttl"><span class="ico">☕</span><h2>咖啡 · 甜點</h2></div>
     <p style="font-size:12.5px;color:var(--sub);margin:-4px 0 14px">富士山景觀咖啡＋東京藏前咖啡一級戰區 · 挑空間大、好帶小孩的</p>
 
@@ -967,7 +973,7 @@
   </section>
 
   <!-- ============ KIDS ============ -->
-  <section id="kids">
+  <section id="kids" class="panel">
     <div class="secttl"><span class="ico">🧒</span><h2>適合小孩的地方</h2></div>
     <p style="font-size:12.5px;color:var(--sub);margin:-4px 0 14px">3 歲＋12 歲都能玩 · 門票/時間已查證，出發前一天再確認公休</p>
 
@@ -1069,7 +1075,7 @@
   </section>
 
   <!-- ============ 提醒 ============ -->
-  <section id="tips">
+  <section id="tips" class="panel">
     <div class="secttl"><span class="ico">📌</span><h2>必看提醒</h2></div>
     <details class="faq" open>
       <summary>📅 8/25–29 公休對照（避免撲空）</summary>
@@ -1165,20 +1171,41 @@
 <input type="file" id="photoInput" accept="image/*" multiple style="display:none" />
 
 <script>
-  // Scroll-spy for sticky day nav
+  // ===== Tab 分頁切換（點 tab 只顯示該頁，捲回頂部）=====
   const navLinks = [...document.querySelectorAll('.daynav a')];
-  const map = {day1:0, day2:1, day3:2, day4:3, day5:4, eat:5, cafe:6, kids:7};
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting && map[e.target.id]!==undefined){
-        navLinks.forEach(l=>l.classList.remove('active'));
-        navLinks[map[e.target.id]]?.classList.add('active');
+  const panels = [...document.querySelectorAll('section.panel')];
+  const daynav = document.querySelector('.daynav');
+  function showPanel(id, scroll){
+    const panel = document.getElementById(id);
+    if(!panel || !panel.classList.contains('panel')) return;
+    panels.forEach(p=>p.classList.remove('active'));
+    panel.classList.add('active');
+    navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+id));
+    // 把選中的 tab 捲進可視範圍（橫向）
+    const activeTab = navLinks.find(l=>l.getAttribute('href')==='#'+id);
+    activeTab && activeTab.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+    if(scroll!==false) window.scrollTo({top:0,behavior:'smooth'});
+    if(history.replaceState) history.replaceState(null,'','#'+id);
+  }
+  // daynav 與底部 quickbar 的連結都改成切換
+  [...document.querySelectorAll('.daynav a, .quickbar a')].forEach(a=>{
+    const href = a.getAttribute('href')||'';
+    if(href.startsWith('#')){
+      const id = href.slice(1);
+      if(document.getElementById(id)?.classList.contains('panel') || id==='recapCard'){
+        a.addEventListener('click',(e)=>{
+          e.preventDefault();
+          if(id==='recapCard'){ document.getElementById('recapCard').scrollIntoView({behavior:'smooth',block:'start'}); return; }
+          showPanel(id, true);
+        });
       }
-    });
-  },{rootMargin:'-45% 0px -50% 0px'});
-  ['day1','day2','day3','day4','day5','eat','cafe','kids'].forEach(id=>{
-    const el=document.getElementById(id); if(el) obs.observe(el);
+    }
   });
+  // 開頁時依 hash 顯示對應頁（沒有就 day1）
+  (function(){
+    const h = (location.hash||'').slice(1);
+    if(h && document.getElementById(h)?.classList.contains('panel')) showPanel(h, false);
+  })();
 
   // ===== Check-off feature (with localStorage) =====
   (function(){
