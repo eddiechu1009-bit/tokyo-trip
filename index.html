@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#2563eb" />
+<title>東京・富士五日 · ANA</title>
+<meta name="description" content="東京・箱根・河口湖・富士山 五天四夜 — 3家庭自駕＋市區親子行程" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#141b2e; --sub:#5f6b85;
+    --line:#e5e9f2; --brand:#2563eb; --brand-2:#3b82f6; --accent:#f43f7e;
+    --fuji:#1d4ed8; --sakura:#ec4899; --leaf:#15803d; --sun:#ea580c;
+    --shadow:0 6px 24px rgba(37,99,235,.08), 0 2px 6px rgba(20,27,46,.05);
+    --r:18px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;
+      transition-duration:.001ms !important;scroll-behavior:auto !important}
+  }
+  body{
+    margin:0;font-family:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.65;
+    -webkit-font-smoothing:antialiased;padding-bottom:84px;
+  }
+  a{color:inherit}
+  .wrap{max-width:560px;margin:0 auto;padding:0 16px}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;
+    background:linear-gradient(150deg,#1d4ed8 0%,#2563eb 45%,#60a5fa 100%);
+    padding:54px 0 40px;border-radius:0 0 28px 28px;
+    box-shadow:var(--shadow);
+  }
+  .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.10)}
+  .hero::before{width:240px;height:240px;top:-90px;right:-70px}
+  .hero::after{width:160px;height:160px;bottom:-70px;left:-40px}
+  .hero .wrap{position:relative;z-index:1}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);
+    backdrop-filter:blur(6px);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:500;margin-bottom:14px}
+  .hero h1{margin:0;font-size:32px;font-weight:900;letter-spacing:.5px;line-height:1.25}
+  .hero .dates{margin-top:8px;font-size:15px;opacity:.95;font-weight:500}
+  .hero .party{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+  .hero .chip{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+    padding:5px 12px;border-radius:999px;font-size:12.5px;font-weight:500}
+
+  /* ===== Day nav (sticky) ===== */
+  .daynav{position:sticky;top:0;z-index:50;background:rgba(244,246,251,.85);
+    backdrop-filter:blur(12px);padding:10px 0;border-bottom:1px solid var(--line);overflow-x:auto}
+  .daynav .wrap{display:flex;gap:7px;min-width:max-content}
+  .daynav a{flex:0 0 auto;text-align:center;padding:9px 12px;border-radius:12px;font-size:13px;
+    font-weight:700;background:var(--card);border:1px solid var(--line);color:var(--sub);
+    text-decoration:none;transition:.2s}
+  .daynav a .d{display:block;font-size:11px;font-weight:500;opacity:.8}
+  .daynav a.active,.daynav a:active{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+  section{margin-top:26px}
+  .day-head{display:flex;align-items:center;gap:12px;margin:8px 0 16px}
+  .day-pill{flex-shrink:0;width:54px;height:54px;border-radius:16px;display:grid;place-items:center;
+    color:#fff;font-weight:900;line-height:1;text-align:center;box-shadow:var(--shadow)}
+  .day-pill .n{font-size:20px}.day-pill .m{font-size:10px;font-weight:600;opacity:.9}
+  .d1{background:linear-gradient(135deg,#1d4ed8,#3b82f6)}
+  .d2{background:linear-gradient(135deg,#0891b2,#22d3ee)}
+  .d3{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+  .d4{background:linear-gradient(135deg,#db2777,#f472b6)}
+  .d5{background:linear-gradient(135deg,#ea580c,#f59e0b)}
+  .day-head h2{margin:0;font-size:19px;font-weight:900}
+  .day-head p{margin:2px 0 0;font-size:13px;color:var(--sub)}
+
+  /* ===== Timeline cards ===== */
+  .tl{position:relative;padding-left:24px}
+  .tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;
+    background:linear-gradient(var(--brand),var(--line))}
+  .item{position:relative;margin-bottom:14px}
+  .item::before{content:"";position:absolute;left:-24px;top:20px;width:14px;height:14px;border-radius:50%;
+    background:#fff;border:3px solid var(--brand);box-shadow:0 0 0 3px var(--bg)}
+  .item.food::before{border-color:var(--sun)}
+  .item.play::before{border-color:var(--leaf)}
+  .item.move::before{border-color:var(--sub)}
+  .card{background:var(--card);border-radius:var(--r);padding:15px 16px;box-shadow:var(--shadow);
+    border:1px solid var(--line)}
+  .time{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;
+    color:var(--brand);background:#e3edff;padding:3px 10px;border-radius:8px;margin-bottom:9px}
+  .item.food .time{color:var(--sun);background:#fff0e6}
+  .item.play .time{color:var(--leaf);background:#e7f5ec}
+  .item.move .time{color:var(--sub);background:#eef2f4}
+  .card h3{margin:0 0 4px;font-size:17px;font-weight:900;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .tag{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:#eef2f4;color:var(--sub)}
+  .tag.kid{background:#ecfccb;color:#4d7c0f}
+  .tag.book{background:#fee2e2;color:#b91c1c}
+  .tag.must{background:#fef3c7;color:#b45309}
+  .tag.closed{background:#f1f5f9;color:#64748b}
+  .card .meta{font-size:13px;color:var(--sub);margin:6px 0}
+  .card .rec{font-size:13.5px;margin:8px 0 4px;padding:8px 11px;background:#f6f9ff;border-radius:10px;
+    border-left:3px solid var(--accent)}
+  .card .rec b{color:var(--ink)}
+  .stars{color:#f59e0b;font-weight:700;font-size:13px}
+  .price{color:var(--leaf);font-weight:700;font-size:13px}
+  .note{font-size:12.5px;color:#b45309;background:#fffbeb;border-radius:9px;padding:7px 10px;margin-top:8px;
+    border:1px solid #fde68a}
+  .note.warn{color:#b91c1c;background:#fef2f2;border-color:#fecaca}
+  .note.todo{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}
+
+  /* ===== Alternatives ===== */
+  details.alt{margin-top:10px;border:1px dashed #cbd5e1;border-radius:11px;overflow:hidden;background:#fcfdfe}
+  details.alt summary{padding:9px 12px;font-size:13px;font-weight:700;color:var(--brand);cursor:pointer;
+    list-style:none;display:flex;align-items:center;gap:6px}
+  details.alt summary::-webkit-details-marker{display:none}
+  details.alt summary::after{content:"切換 ▾";margin-left:auto;font-size:11px;color:var(--sub);font-weight:600}
+  details.alt[open] summary::after{content:"收合 ▴"}
+  details.alt .alt-body{padding:2px 12px 11px}
+  .alt-item{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;
+    border-top:1px solid var(--line)}
+  .alt-item:first-child{border-top:none}
+  .alt-item .ai{min-width:0}
+  .alt-item .ai b{font-size:13.5px;font-weight:700}
+  .alt-item .ai span{display:block;font-size:11.5px;color:var(--sub);margin-top:1px}
+  .alt-item a.mini{flex-shrink:0;background:#34a853;color:#fff;font-size:12px;font-weight:700;
+    text-decoration:none;padding:7px 11px;border-radius:9px}
+  .alt-item a.mini:active{transform:scale(.96)}
+
+  /* ===== Check-off ===== */
+  .card{position:relative}
+  .chk{position:absolute;top:13px;right:13px;width:30px;height:30px;border-radius:50%;
+    border:2px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;
+    transition:.18s;padding:0;flex-shrink:0;z-index:2}
+  .chk svg{width:16px;height:16px;stroke:#cbd5e1;fill:none;stroke-width:3;transition:.18s}
+  .chk:active{transform:scale(.88)}
+  .card h3{padding-right:36px}
+  .card.done{opacity:.72;padding-top:12px;padding-bottom:12px}
+  .card.done .chk{background:var(--leaf);border-color:var(--leaf)}
+  .card.done .chk svg{stroke:#fff}
+  .card.done h3{text-decoration:line-through;text-decoration-color:var(--leaf);text-decoration-thickness:2px;
+    margin:0;font-size:15px}
+  .item.done::before{background:var(--leaf);border-color:var(--leaf)}
+  .card.done > *:not(h3):not(.chk){display:none !important}
+
+  /* progress bar */
+  .progress{background:var(--card);border-radius:14px;padding:13px 16px;box-shadow:var(--shadow);
+    border:1px solid var(--line);margin-bottom:4px}
+  .progress .pt{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;margin-bottom:8px}
+  .progress .pt span{color:var(--brand)}
+  .progress .bar{height:9px;border-radius:99px;background:var(--bg);overflow:hidden}
+  .progress .fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--brand),var(--sakura));
+    width:0;transition:width .4s ease}
+  .progress .reset{margin-top:9px;font-size:12px;color:var(--sub);background:none;border:none;cursor:pointer;
+    text-decoration:underline;padding:0}
+
+  /* ===== Photos ===== */
+  .photos{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+  .photos .ph{position:relative;width:72px;height:72px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+  .photos .ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .photos .ph .del{position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;
+    background:rgba(0,0,0,.6);color:#fff;border:none;font-size:11px;line-height:1;cursor:pointer;display:grid;place-items:center}
+  .addph{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:12.5px;font-weight:700;
+    color:var(--brand);background:#e3edff;border:none;border-radius:10px;padding:8px 12px;cursor:pointer}
+  .addph:active{transform:scale(.97)}
+  .item.food .addph{color:var(--sun);background:#fff0e6}
+  .item.play .addph{color:var(--leaf);background:#e7f5ec}
+  .reco .addph{margin-top:9px;font-size:12px;padding:7px 11px}
+  .reco{position:relative}
+  .reco .chk{top:11px;right:11px}
+  .reco h4{padding-right:34px}
+  .reco.done{opacity:.65;padding-top:11px;padding-bottom:11px}
+  .reco.done .chk{background:var(--leaf);border-color:var(--leaf)}
+  .reco.done .chk svg{stroke:#fff}
+  .reco.done h4{text-decoration:line-through;text-decoration-color:var(--leaf);text-decoration-thickness:2px;margin:0}
+  .reco.done .desc, .reco.done .btns, .reco.done .photos, .reco.done .addph, .reco.done .type{display:none !important}
+
+  /* ===== Recap ===== */
+  .recap-card{background:linear-gradient(135deg,#2563eb,#ec4899);color:#fff;border-radius:var(--r);
+    padding:18px 16px;box-shadow:var(--shadow);margin-bottom:4px}
+  .recap-card h3{margin:0 0 4px;font-size:18px;font-weight:900}
+  .recap-card p{margin:0 0 12px;font-size:12.5px;opacity:.92}
+  .recap-card .rbtns{display:flex;gap:8px;flex-wrap:wrap}
+  .recap-card button{flex:1;min-width:120px;border:none;border-radius:11px;padding:11px;font-size:13.5px;
+    font-weight:800;cursor:pointer;background:rgba(255,255,255,.92);color:#2563eb}
+  .recap-card button:active{transform:scale(.97)}
+  .recap-card button:disabled{opacity:.5}
+  .player{position:fixed;inset:0;z-index:200;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center}
+  .player.show{display:flex}
+  .player canvas{max-width:100%;max-height:80vh;border-radius:8px}
+  .player .pbar{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;
+    padding:14px 16px calc(14px + env(safe-area-inset-top));color:#fff}
+  .player .pbar button{background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:10px;
+    padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer}
+  .player .status{position:absolute;bottom:0;left:0;right:0;text-align:center;color:#fff;font-size:13px;
+    padding:18px;opacity:.9}
+
+  .leg{position:relative;margin:-4px 0 10px;padding:3px 0 3px 4px;font-size:12px;font-weight:600;
+    color:var(--sub);display:flex;align-items:center;gap:6px}
+  .leg::before{content:"";position:absolute;left:-17px;top:0;bottom:0;width:2px;
+    background:repeating-linear-gradient(var(--sub) 0 4px,transparent 4px 8px);opacity:.5}
+
+  .btns{display:flex;gap:6px;margin-top:11px;flex-wrap:nowrap}
+  .btn{flex:1 1 0;min-width:0;display:inline-flex;align-items:center;justify-content:center;gap:5px;
+    padding:11px 6px;border-radius:12px;font-size:13px;font-weight:700;text-decoration:none;
+    white-space:nowrap;transition:.15s;border:none;cursor:pointer}
+  .btn:active{transform:scale(.97)}
+  .btn-g{background:#34a853;color:#fff}
+  .btn-a{background:#0a0a0a;color:#fff}
+  .btn-tel{background:#e3edff;color:var(--brand);flex:0 0 auto;min-width:auto;padding:11px 15px}
+  .btn svg{width:16px;height:16px}
+
+  /* ===== Recommendation lists ===== */
+  .reco-grid{display:grid;gap:11px}
+  .reco{background:var(--card);border-radius:14px;padding:13px 15px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .reco .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .reco h4{margin:0;font-size:15.5px;font-weight:800}
+  .reco .type{font-size:12px;color:var(--sub)}
+  .reco .desc{font-size:12.5px;color:var(--sub);margin:6px 0 0}
+  .rank{flex-shrink:0;width:22px;height:22px;border-radius:7px;background:var(--brand);color:#fff;
+    font-size:12px;font-weight:800;display:grid;place-items:center}
+  .reco .btns{margin-top:9px}
+
+  .secttl{display:flex;align-items:center;gap:9px;margin:0 0 13px}
+  .secttl .ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:18px;
+    background:var(--card);box-shadow:var(--shadow)}
+  .secttl h2{margin:0;font-size:19px;font-weight:900}
+  .subttl{margin:18px 0 8px;font-size:14px;font-weight:800}
+
+  details.faq{background:var(--card);border-radius:14px;padding:0;box-shadow:var(--shadow);
+    border:1px solid var(--line);margin-bottom:10px;overflow:hidden}
+  details.faq summary{padding:14px 16px;font-weight:800;font-size:14.5px;cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::after{content:"＋";color:var(--brand);font-weight:900}
+  details.faq[open] summary::after{content:"－"}
+  details.faq .body{padding:0 16px 15px;font-size:13.5px;color:var(--sub)}
+  details.faq .body b{color:var(--ink)}
+
+  footer{text-align:center;color:var(--sub);font-size:12px;margin:34px 0 10px;padding:0 16px}
+  footer .heart{color:var(--sakura)}
+
+  /* ===== Bottom quick bar ===== */
+  .quickbar{position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.9);
+    backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 0 calc(8px + env(safe-area-inset-bottom))}
+  .quickbar .wrap{display:flex;gap:5px}
+  .quickbar a{flex:1;text-align:center;font-size:10.5px;font-weight:700;color:var(--sub);text-decoration:none;
+    display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 2px}
+  .quickbar a .qi{font-size:18px}
+  .quickbar a:active{color:var(--brand)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">🗻 東京・富士・箱根</span>
+    <h1>東京・富士五日</h1>
+    <div class="dates">2026 / 8/25（二）– 8/29（六）· 五天四夜 · ✈️ ANA</div>
+    <div class="party">
+      <span class="chip">👨‍👩‍👧 3 家庭 · 6 大 2 小（3歲・12歲）</span>
+      <span class="chip">🚗 D1–D3 自駕（小田原取還車）</span>
+      <span class="chip">🏨 天成園 → 河口湖 → Clover House</span>
+    </div>
+  </div>
+</header>
+
+<nav class="daynav">
+  <div class="wrap">
+    <a href="#day1" class="active">D1<span class="d">羽田→小田原</span></a>
+    <a href="#day2">D2<span class="d">箱根→河口湖</span></a>
+    <a href="#day3">D3<span class="d">忍野→東京</span></a>
+    <a href="#day4">D4<span class="d">東京市區</span></a>
+    <a href="#day5">D5<span class="d">返程</span></a>
+    <a href="#eat">美食<span class="d">口袋名單</span></a>
+    <a href="#cafe">咖啡<span class="d">甜點</span></a>
+    <a href="#kids">親子<span class="d">帶小孩</span></a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <div class="progress" style="margin-top:18px">
+    <div class="pt"><div>✅ 行程完成度</div><div><span id="pdone">0</span> / <span id="ptotal">0</span></div></div>
+    <div class="bar"><div class="fill" id="pfill"></div></div>
+    <button class="reset" id="preset">清除全部勾選</button>
+  </div>
+
+  <div class="recap-card" id="recapCard" style="margin-top:12px">
+    <h3>🎬 旅程回顧</h3>
+    <p>在<b>行程卡、美食、咖啡</b>任一店家按「📷 去過了·加照片」；臨時發現的店用下方「➕ 自由打卡」也能加！目前已收集 <b id="phcount">0</b> 張照片。</p>
+    <div class="rbtns">
+      <button id="freeCheckin" style="background:#fff;color:#2563eb">➕ 自由打卡</button>
+      <button id="playRecap">▶️ 播放回顧</button>
+      <button id="dlRecap">⬇️ 下載影片</button>
+    </div>
+  </div>
+
+  <!-- ============ DAY 1 ============ -->
+  <section id="day1">
+    <div class="day-head">
+      <div class="day-pill d1"><span class="n">25</span><span class="m">TUE</span></div>
+      <div><h2>台灣 → 羽田 → 小田原</h2><p>8/25（二）· 下午飛抵羽田，搭新幹線到小田原住一晚</p></div>
+    </div>
+    <div class="tl">
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">✈️ 13:30 起飛</span>
+          <h3>台灣（松山）→ 羽田<span class="tag">ANA 去程</span></h3>
+          <div class="meta">13:30 出發（台北松山）· 17:45 抵達 羽田機場 Haneda</div>
+          <div class="rec">下機後辦入境、領行李、換交通票。往品川方向搭京急線</div>
+          <div class="note todo">📝 待補：ANA 航班編號、機場航廈（羽田第3航廈國際線）· 建議先備好 Suica/PASMO 或西瓜卡 App</div>
+        </div>
+      </div>
+
+      <div class="leg">🚆 京急線 → 品川（約 20 分）</div>
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">🚄 19:43 → 20:09</span>
+          <h3>新幹線 品川 → 小田原<span class="tag">約 26 分</span></h3>
+          <div class="meta">東海道新幹線 こだま/ひかり · 品川 19:43 發 · 小田原 20:09 到</div>
+          <div class="rec">6 大 2 小可劃同車廂。小孩 6 歲以下不佔位免票（3 歲免票、12 歲需兒童票）</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=小田原駅" target="_blank">Google 小田原站</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Odawara+Station" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item food">
+        <div class="card">
+          <span class="time">🍽️ 20:15 晚餐</span>
+          <h3>小田原車站附近晚餐<span class="tag">待選店家</span></h3>
+          <div class="meta">小田原駅周邊（東口 Lusca 百貨、駅前商店街）· 到站已晚，就近解決</div>
+          <div class="rec"><b>推薦（見下方美食）：</b>だるま料理店（座敷個室・8人團最有力，需預約）；到站晚/想省力就上住宿樓上「天成園 14F 展望餐廳」；小田原おでん本店也可</div>
+          <div class="note">小田原名物：海鮮丼、干物、蒲鉾（魚板）、關東煮。だるま週間營業但座敷需預約</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=だるま料理店+小田原市本町2-1-30" target="_blank">Google だるま</a>
+            <a class="btn btn-tel" href="tel:0465224128">📞</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">🏨 入住</span>
+          <h3>天成園 小田原駅 別館<span class="tag kid">溫泉</span></h3>
+          <div class="meta">Tenseien Odawara Station Annex · 小田原駅前，步行即達</div>
+          <div class="rec"><b>亮點：</b>車站旁溫泉旅館，有大浴場可泡湯放鬆，適合帶小孩、行李好搬。隔天早上小田原城步行可到</div>
+          <div class="note todo">📝 待補：訂房確認號、入住/退房時間、是否含早餐、房型（3 家庭幾間房）</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=天成園+小田原駅別館" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Tenseien+Odawara+Station+Annex" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ DAY 2 ============ -->
+  <section id="day2">
+    <div class="day-head">
+      <div class="day-pill d2"><span class="n">26</span><span class="m">WED</span></div>
+      <div><h2>小田原城 · 箱根 · 御殿場 · 河口湖</h2><p>8/26（三）· 09:00 取車自駕，一路玩到河口湖住宿</p></div>
+    </div>
+    <div class="tl">
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">🚗 09:00 取車</span>
+          <h3>小田原取車（自駕開始）<span class="tag book">需備駕照譯本</span></h3>
+          <div class="meta">小田原駅周邊租車點取車 · 今日自駕：小田原→箱根→御殿場→河口湖</div>
+          <div class="rec"><b>🛡️ 日本自駕必備：台灣駕照 ＋「日文譯本」</b>（監理站或 JAF 辦，正本一起帶）。8 人建議租 8–10 人座（如 HIACE / Alphard 或兩台車）</div>
+          <div class="note warn">⚠️ 日本靠左行駛、雨刷方向燈相反；ETC 卡、兒童座椅（3 歲必備、12 歲視身高）取車時確認</div>
+          <div class="note todo">📝 待補：租車公司、取車點地址、車型/車數、還車時間（D3 小田原還）</div>
+        </div>
+      </div>
+
+      <div class="leg">🚗 約 8 分（小田原城就在市區）</div>
+
+      <div class="item play">
+        <div class="card">
+          <span class="time">🏯 上午</span>
+          <h3>小田原城<span class="tag kid">親子</span><span class="tag must">天守閣</span></h3>
+          <div class="meta">Odawara Castle · 城址公園散步 ＋ 登天守閣看相模灣</div>
+          <div class="rec"><b>玩法：</b>看天守閣、城址公園櫻花/銀杏、忍者館（小孩喜歡）。天守閣需登高，3 歲可背巾。公園腹地大好放電</div>
+          <div class="note todo">📝 開放時間、門票等下方「親子景點」會補</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=小田原城" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Odawara+Castle" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚗 約 40 分 · 山路（往箱根蘆之湖）</div>
+
+      <div class="item play">
+        <div class="card">
+          <span class="time">⛩️ 中午前後</span>
+          <h3>箱根神社 · 蘆之湖<span class="tag must">水中鳥居</span></h3>
+          <div class="meta">Hakone Shrine · 蘆之湖畔「平和鳥居」· 神社參拜 · 湖景</div>
+          <div class="rec"><b>亮點：</b>湖中紅色鳥居（超好拍・常要排隊）、神社參道杉木林、蘆之湖遊船/海賊船可選。天氣好可望富士山</div>
+          <div class="note">⚠️ 鳥居拍照人多需排隊；山路易起霧，開車注意。午餐可在此區或御殿場解決</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=箱根神社+平和の鳥居" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Hakone+Shrine" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚗 約 40 分（往御殿場）</div>
+
+      <div class="item food">
+        <div class="card">
+          <span class="time">🛍️ 下午</span>
+          <h3>御殿場 Premium Outlets<span class="tag">逛街 · 吃飯</span></h3>
+          <div class="meta">Gotemba Premium Outlets · 逛街／吃飯／買晚餐或補給 · 晴天可正對富士山</div>
+          <div class="rec"><b>玩法：</b>日本最大 outlet 之一，品牌多。美食廣場、餐廳可解決午/晚餐，也能買零食補給帶去河口湖。有摩天輪、兒童遊戲區</div>
+          <div class="note todo">📝 營業時間、美食推薦等下方「美食/親子」會補</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=御殿場プレミアムアウトレット" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Gotemba+Premium+Outlets" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚗 約 45 分（往河口湖住宿）</div>
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">🏠 傍晚入住</span>
+          <h3>河口湖住宿<span class="tag kid">富士山景</span></h3>
+          <div class="meta">Kawaguchi 3064, Fujikawaguchiko（河口湖畔）· 開往 Lake Kawaguchi</div>
+          <div class="rec"><b>亮點：</b>河口湖住一晚，運氣好清晨可看逆富士。晚餐可在住宿附近或超市採買。附近有 Lawson 富士山打卡點</div>
+          <div class="note todo">📝 待補：訂房確認、入住/退房、是否含餐、停車、房型（幾間）</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=Kawaguchi+3064+Fujikawaguchiko" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Kawaguchi+3064+Fujikawaguchiko" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ DAY 3 ============ -->
+  <section id="day3">
+    <div class="day-head">
+      <div class="day-pill d3"><span class="n">27</span><span class="m">THU</span></div>
+      <div><h2>河口湖 · 忍野 · 還車 · 進東京</h2><p>8/27（四）· 玩富士山周邊，回小田原還車，新幹線進東京</p></div>
+    </div>
+    <div class="tl">
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">🌅 上午出發</span>
+          <h3>河口湖住宿出發<span class="tag">收拾行李</span></h3>
+          <div class="meta">退房後開始今日富士山周邊行程</div>
+          <div class="rec">早晨天氣通常最清澈，把握上午拍富士山。退房前確認行李都上車</div>
+        </div>
+      </div>
+
+      <div class="leg">🚗 往天上山公園纜車</div>
+
+      <div class="item play">
+        <div class="card">
+          <span class="time">🚡 上午</span>
+          <h3>富士山全景纜車<span class="tag kid">纜車</span><span class="tag must">富士山景</span></h3>
+          <div class="meta">Mt. Fuji Panoramic Ropeway（～富士山パノラマロープウェイ・天上山公園）· 河口湖畔</div>
+          <div class="rec"><b>亮點：</b>3 分鐘纜車登天上山，展望台正對富士山＋河口湖。狸貓與兔子主題（かちかち山傳說），小孩喜歡</div>
+          <div class="note todo">📝 票價、營運時間等下方「親子景點」會補</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=富士山パノラマロープウェイ" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Mt+Fuji+Panoramic+Ropeway" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚗 約 15 分</div>
+
+      <div class="item play">
+        <div class="card">
+          <span class="time">⛩️ 上午</span>
+          <h3>新倉山淺間公園<span class="tag must">忠靈塔經典景</span></h3>
+          <div class="meta">Arakurayama Sengen Park · 五重塔（忠靈塔）＋富士山＋櫻花的日本代表明信片畫面</div>
+          <div class="rec"><b>亮點：</b>爬約 400 階到忠靈塔展望台，五重塔＋富士山同框。<b>12 歲沒問題，3 歲需抱或推車較吃力</b>（有替代坡道）</div>
+          <div class="note">⚠️ 階梯多，帶 3 歲建議一人背巾；停車場離入口有段路</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=新倉山浅間公園" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Arakurayama+Sengen+Park" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚗 約 20 分（往忍野八海）</div>
+
+      <div class="item play">
+        <div class="card">
+          <span class="time">💧 午前後</span>
+          <h3>忍野八海<span class="tag kid">親子好走</span></h3>
+          <div class="meta">Oshino Hakkai · 富士雪水湧泉群 · 保存傳統茅葺屋聚落</div>
+          <div class="rec"><b>玩法：</b>八個清澈湧泉池、清透見底，搭配富士山背景。平地好走，<b>3 歲和 12 歲都適合</b>。<b>午餐推薦：</b>天祥庵手打蕎麥(有座敷・賣完就關・週三休)，或八海中心「池本茶屋」邊走邊吃草餅＋霜淇淋</div>
+          <div class="note">案內所有免費輪椅、尿布台。底抜池入館大人¥300</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=忍野八海" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Oshino+Hakkai" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚗 約 1 小時（回小田原還車）</div>
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">⛽ 下午還車</span>
+          <h3>回小田原還車<span class="tag book">加滿油</span></h3>
+          <div class="meta">河口湖 → 小田原 · 還車後步行/計程到小田原駅</div>
+          <div class="rec">還車前記得加滿油、車內物品帶齊。還車後在小田原駅附近吃晚餐，再搭新幹線進東京</div>
+          <div class="note todo">📝 待補：還車確切時間、租車點地址</div>
+        </div>
+      </div>
+
+      <div class="item food">
+        <div class="card">
+          <span class="time">🍽️ 晚餐（週四）</span>
+          <h3>小田原車站附近晚餐<span class="tag">還車後</span></h3>
+          <div class="meta">還車後、搭 19:44 新幹線前，在小田原駅周邊吃晚餐</div>
+          <div class="rec"><b>推薦：</b>だるま料理店（座敷個室・8人團・週四有開）或天成園14F。<b style="color:#b45309">⚠️ 小田原おでん本店週四傾向休，這天別選</b></div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=だるま料理店+小田原市本町2-1-30" target="_blank">Google だるま</a>
+            <a class="btn btn-tel" href="tel:0465224128">📞</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚄 新幹線 小田原 19:44 → 東京 20:18（約 34 分）</div>
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">🚄 19:44 → 20:18</span>
+          <h3>新幹線 小田原 → 東京<span class="tag">進市區</span></h3>
+          <div class="meta">小田原 19:44 發 · 東京 20:18 到 · 再轉車到淺草橋 Clover House</div>
+          <div class="rec">東京站轉 JR 總武線 → 淺草橋站（約 15–20 分），或計程車。行李多建議分兩台計程</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=東京駅" target="_blank">Google 東京站</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Tokyo+Station" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">🏨 入住</span>
+          <h3>Clover House（淺草橋）<span class="tag kid">兩晚</span></h3>
+          <div class="meta">東京都台東区浅草橋 1-35-1（〒111-0053）· D3、D4 連住兩晚</div>
+          <div class="rec"><b>位置優勢：</b>淺草橋近 JR 總武線、都營淺草線，到淺草、秋葉原、築地、上野都方便。整棟/公寓型，3 家庭好聚在一起</div>
+          <div class="note todo">📝 待補：訂房確認、check-in 方式（密碼鎖/鑰匙）、房間數與分配</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=Clover+House+浅草橋1-35-1+台東区" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Clover+House+Asakusabashi+1-35-1" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ DAY 4 ============ -->
+  <section id="day4">
+    <div class="day-head">
+      <div class="day-pill d4"><span class="n">28</span><span class="m">FRI</span></div>
+      <div><h2>東京市區一日</h2><p>8/28（五）· 水族館・築地・明治神宮・新宿・淺草，晚上一起吃燒肉</p></div>
+    </div>
+    <div class="tl">
+
+      <div class="item play">
+        <div class="card">
+          <span class="time">🐟 上午</span>
+          <h3>葛西臨海水族園<span class="tag kid">小孩最愛</span></h3>
+          <div class="meta">Kasai Rinkai Aquarium · 大型鮪魚迴游水槽、企鵝、海洋生物 · 臨海公園內</div>
+          <div class="rec"><b>亮點：</b>玻璃圓頂、2200 噸黑鮪魚迴游超震撼，企鵝區小孩瘋。園區大、有摩天輪與草地，<b>3 歲、12 歲都超適合</b></div>
+          <div class="note todo">📝 門票、開放時間、公休等下方「親子景點」會補</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=葛西臨海水族園" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Kasai+Rinkai+Aquarium" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚆 JR 京葉線（葛西臨海公園→東京→築地約 30 分）</div>
+
+      <div class="item food">
+        <div class="card">
+          <span class="time">🍣 午餐</span>
+          <h3>築地場外市場<span class="tag must">海鮮</span></h3>
+          <div class="meta">Tsukiji Outer Market · 玉子燒、海鮮丼、生蠔、和牛串、壽司 · 邊走邊吃</div>
+          <div class="rec"><b>玩法：</b>場外市場小吃林立，適合分頭覓食。玉子燒（丸武/大定）、海鮮丼、玉木屋、鮪魚串。<b>小孩可吃玉子燒、烤扇貝、可樂餅</b></div>
+          <div class="note">⚠️ 多數店家「早上到下午 14:00」為主，愈晚愈多收攤；週日部分公休。建議午前到</div>
+          <div class="note todo">📝 具體店家等下方「美食」築地區補</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=築地場外市場" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Tsukiji+Outer+Market" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚆 往原宿/表參道（約 25 分）</div>
+
+      <div class="item play">
+        <div class="card">
+          <span class="time">⛩️ 下午</span>
+          <h3>明治神宮<span class="tag kid">森林散步</span></h3>
+          <div class="meta">Meiji Jingu · 原宿旁大鳥居、參道森林、清正井 · 都心綠洲</div>
+          <div class="rec"><b>玩法：</b>寬闊碎石參道、大鳥居、莊嚴本殿。緊鄰原宿竹下通、表參道，逛街購物一次滿足。小孩走參道森林很舒服</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=明治神宮" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Meiji+Jingu" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚆 原宿 → 新宿（JR 山手線約 5 分）</div>
+
+      <div class="item play">
+        <div class="card">
+          <span class="time">🌆 傍晚</span>
+          <h3>新宿<span class="tag">購物 · 逛街</span></h3>
+          <div class="meta">Shinjuku · 百貨、藥妝、電器、歌舞伎町、都廳夜景（免費展望台）</div>
+          <div class="rec"><b>玩法：</b>百貨/藥妝/唐吉訶德補貨，都廳 45 樓免費展望台看夜景。小田急/伊勢丹美食街可買晚餐。<b>帶小孩可去都廳展望台或新宿御苑（白天）</b></div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=新宿駅" target="_blank">Google 新宿</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Shinjuku+Station" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚆 回淺草一帶（準備燒肉晚餐）</div>
+
+      <div class="item play">
+        <div class="card">
+          <span class="time">🏮 傍晚/夜</span>
+          <h3>淺草 雷門・仲見世<span class="tag kid">和服體驗</span></h3>
+          <div class="meta">Asakusa · 雷門大燈籠、仲見世商店街、淺草寺、晴空塔背景 · 離住宿最近</div>
+          <div class="rec"><b>玩法：</b>雷門拍照、仲見世買人形燒/雷おこし、淺草寺參拜。可租和服。<b>近 Clover House，燒肉前先來逛剛好</b>。淺草花屋敷（老遊樂園）小孩會愛</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=浅草寺+雷門" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Sensoji+Kaminarimon" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item food">
+        <div class="card">
+          <span class="time">🥩 晚餐</span>
+          <h3>大家一起吃燒肉<span class="tag book">8人需訂位</span><span class="tag must">重頭戲</span></h3>
+          <div class="meta">6 大 2 小的團體燒肉之夜 · 優先淺草/上野一帶（離住宿近）</div>
+          <div class="rec"><b>首推 和牛焼肉 土古里 淺草店：</b>完全個室、<b>全席無煙烤爐</b>、有兒童餐、嬰兒車可入、桌椅席、淺草站1分、無休。<b>請先訂位並註明1位3歲幼兒</b>。備選：平城苑、本とさや(需問椅子席)、肉屋の台所(未就學免費)</div>
+          <div class="note warn">⚠️ 8 人含幼兒務必提前網路/電話訂位，要包廂或大桌＋兒童椅</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=和牛焼肉+土古里+浅草店+台東区雷門2-18-11" target="_blank">Google 土古里</a>
+            <a class="btn btn-tel" href="tel:0352466633">📞 訂位</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ DAY 5 ============ -->
+  <section id="day5">
+    <div class="day-head">
+      <div class="day-pill d5"><span class="n">29</span><span class="m">SAT</span></div>
+      <div><h2>羽田 → 松山</h2><p>8/29（六）· 退房、前往羽田機場搭 ANA 回台</p></div>
+    </div>
+    <div class="tl">
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">🏨 上午退房</span>
+          <h3>Clover House 退房<span class="tag">行李寄放</span></h3>
+          <div class="meta">東京都台東区浅草橋 1-35-1 · 退房後往羽田機場</div>
+          <div class="rec">淺草橋 → 羽田：都營淺草線直通京急線（不用轉車，約 40–50 分）最方便。行李多可叫計程車</div>
+          <div class="note warn">⚠️ 13:20 起飛，建議 <b>10:30 前</b>抵達羽田辦登機/退稅。國際線提前 2–3 小時到</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=Clover+House+浅草橋1-35-1" target="_blank">Google 導航</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Clover+House+Asakusabashi" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="leg">🚆 都營淺草線直通京急 → 羽田機場（約 45 分）</div>
+
+      <div class="item move">
+        <div class="card">
+          <span class="time">✈️ 13:20 → 15:50</span>
+          <h3>羽田 → 松山<span class="tag">ANA 回程</span></h3>
+          <div class="meta">13:20 羽田起飛 · 15:50 抵達 松山機場</div>
+          <div class="rec">預留退稅、逛免稅、吃最後一餐的時間。羽田第 3 航廈有江戶小路好逛</div>
+          <div class="note todo">📝 待補：ANA 回程航班編號、航廈</div>
+          <div class="btns">
+            <a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=羽田空港+第3ターミナル" target="_blank">Google 羽田</a>
+            <a class="btn btn-a" href="https://maps.apple.com/?q=Haneda+Airport+Terminal+3" target="_blank">Apple 地圖</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ EAT ============ -->
+  <section id="eat">
+    <div class="secttl"><span class="ico">🍜</span><h2>美食口袋名單</h2></div>
+    <p style="font-size:12.5px;color:var(--sub);margin:-4px 0 14px">依路線分區 · 以團體(8人)可入座、小孩友善為主 · ⚠️ 8 人含幼兒<b>務必提前訂位</b>並註明要桌椅席＋兒童椅</p>
+
+    <div class="subttl" style="color:var(--brand)">🥩 Day4 晚餐・燒肉（重頭戲・淺草）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>和牛焼肉 土古里 淺草店 <span class="rank">1</span></h4><div class="type">和牛燒肉 · 食べログ3.5+ · 晚套餐¥7,000起 · ✅可訂位</div></div></div>
+        <div class="desc"><b>首推・最符合本團：</b>完全個室、<b>全席無煙烤爐</b>(衣服不沾味)、山形牛一頭買、<b>有兒童餐</b>、嬰兒車可入、桌椅席長輩幼兒舒適。淺草站步1分、無休。<b>請先網路/電話訂位並註明1位3歲幼兒</b></div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=和牛焼肉+土古里+浅草店+台東区雷門2-18-11" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0352466633">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>平城苑 淺草總本店 <span class="rank">2</span></h4><div class="type">A5和牛老字號 · Google4.3 · ✅可訂位 · 田原町站3分</div></div></div>
+        <div class="desc">50年 A5 和牛老店，江戶風裝潢寬敞，適合三代同堂正式一餐。和牛套餐偏高，¥2,886起</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=平城苑+浅草総本店+西浅草" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Heijoen+Asakusa" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>本とさや <span class="rank">3</span></h4><div class="type">炭火燒肉在地名店 · 食べログ3.7+ · 拼盤¥7,000起 · 雷門6分</div></div></div>
+        <div class="desc">炭火香、CP 高的在地老店。<b>⚠️ 榻榻米地板席需脫鞋，長輩/3歲久坐較累</b>，訂位務必問是否有椅子席。只能電話預約、常客滿</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=本とさや+西浅草3-1-9" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0338450138">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>肉屋の台所 上野公園前店 <span class="rank">4</span></h4><div class="type">和牛吃到飽備選 · 食べログ3.4+ · ¥5,000–7,000 · ✅可網路訂</div></div></div>
+        <div class="desc">完全個室 4–16 名、子連れ大歡迎，<b>未就學兒免費、小學生半額</b>，有兒童椅、嬰兒車可入。京成上野站附近</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=肉屋の台所+上野公園前店" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Nikuya+no+Daidokoro+Ueno" target="_blank">Apple 地圖</a></div>
+      </div>
+    </div>
+
+    <div class="subttl" style="color:#0891b2">🏯 小田原（D1、D3 晚餐 / D2 早上）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>だるま料理店（だるま本店）<span class="rank" style="background:#0891b2">1</span></h4><div class="type">日本料理・天丼 · 食べログ3.49 · 座敷會席¥4,400起 · ✅可訂位</div></div></div>
+        <div class="desc"><b>小田原晚餐最有力：</b>明治26年創業、登錄有形文化財名建築。<b>座敷個室可容8–10人</b>、無料停車場、大型巴士可談。名物特天丼、相模灣刺身。座敷需預約。駅東口步8分</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=だるま料理店+小田原市本町2-1-30" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0465224128">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>小田原おでん本店 <span class="rank" style="background:#0891b2">2</span></h4><div class="type">關東煮・和食 · 食べログ3.62（區內上位）· 個室座敷</div></div></div>
+        <div class="desc">在地名物小田原關東煮，高湯上品、小孩好入口。有個室・座敷，團體要預約。<b style="color:#b91c1c">⚠️ 週四傾向公休 → D3(8/27 週四)晚餐別選它，改だるま或天成園</b></div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=小田原おでん本店+浜町3-11-30" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0465200320">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>スカイダイニング 天成園（別館14F）<span class="rank" style="background:#0891b2">3</span></h4><div class="type">涮涮鍋・和食 · 車站直結 · 展望席</div></div></div>
+        <div class="desc"><b>就是住宿樓上！</b>ミナカ小田原塔14樓展望餐廳，望相模灣＋小田原城。到站晚、下雨、帶小孩最省力的選擇。展望席要預約</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=ミナカ小田原+スカイダイニング天成園" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Minaka+Odawara" target="_blank">Apple 地圖</a></div>
+      </div>
+    </div>
+
+    <div class="subttl" style="color:#0369a1">⛩️ 箱根（D2 午餐・蘆之湖畔集中）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>あしのこ茶屋 <span class="rank" style="background:#0369a1">1</span></h4><div class="type">和食・土鍋飯+おばんざい · 元箱根港步2分 · ¥2,500–3,500</div></div></div>
+        <div class="desc">2024 翻新，五星米師傅土鍋飯＋家常菜 buffet、和風甜點，小孩以飯類為主好入口。<b>就在箱根神社動線上</b>。週四傾向公休（隨季節），先確認</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=あしのこ茶屋+箱根町元箱根6-8" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0460836731">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>深生そば <span class="rank" style="background:#0369a1">2</span></h4><div class="type">蕎麥麵 · 食べログ3.46 · 有座敷 · 元箱根港</div></div></div>
+        <div class="desc"><b>1樓桌席＋座敷、2樓望蘆之湖鳥居</b>。ぶっかけ天ちらし、鴨南蛮。有座敷團體友善，帶小孩可悠閒</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=深生そば+元箱根港" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0460836618">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>芦ノ湖テラス（Pizza）<span class="rank" style="background:#0369a1">3</span></h4><div class="type">義式・柴窯披薩 · 食べログ3.55百名店 · ¥2,000–3,500</div></div></div>
+        <div class="desc">柴窯正統拿坡里披薩＋當地三島蔬菜，<b>披薩義大利麵小孩接受度高</b>。露台絕景、人氣店需預約</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=芦ノ湖テラス+元箱根" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Ashinoko+Terrace" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>權現からめもち（神社お休み処）</h4><div class="type">甜味・輕食 · 食べログ3.56 · ¥1,000以下</div></div></div>
+        <div class="desc">箱根神社境內茶屋，龍神水做的四色麻糬(紅豆/黃豆粉/芝麻/海苔)、烏龍麵。<b>參拜後小孩點心首選</b></div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=権現からめもち+箱根神社" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0460835122">📞</a></div>
+      </div>
+    </div>
+
+    <div class="subttl" style="color:var(--sun)">🛍️ 御殿場 Outlet（D2 下午 · 全在同一園區）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>炭燒レストランさわやか（げんこつ漢堡排）<span class="rank" style="background:var(--sun)">★</span></h4><div class="type">靜岡名物漢堡排 · 食べログ3.60（區內第一）· 有兒童餐</div></div></div>
+        <div class="desc">靜岡傳說級「拳骨漢堡排」。<b>⚠️ 超排隊（平日2–3h、假日4–5h、連假7–9h）不可預約</b>，9:30 起發整理券，QR→LINE 通知，可邊逛邊等。<b>時間難掌控，與固定行程不易兼顧</b>，能取到號再吃</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=さわやか+御殿場プレミアムアウトレット店" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0550826311">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>Eggs'n Things <span class="rank" style="background:var(--sun)">1</span></h4><div class="type">鬆餅・夏威夷 · 子連れ極好評 · 有兒童餐</div></div></div>
+        <div class="desc"><b>帶 3 歲最推</b>：店內寬、嬰兒車可入，兒童菜單背面附著色＋借蠟筆。鬆餅小孩超愛，等位好掌握</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=Eggs'n+Things+御殿場アウトレット" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Eggs+n+Things+Gotemba" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>田むら 銀かつ亭 <span class="rank" style="background:var(--sun)">2</span></h4><div class="type">豬排 · 食べログ3.47 · 名物豆腐かつ煮 · 桌席</div></div></div>
+        <div class="desc">箱根強羅名店分店，招牌<b>豆腐炸豬排煮</b>清爽好分食、小孩易入口。整理券制、有桌席</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=田むら銀かつ亭+御殿場アウトレット" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0550888600">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>瓢六亭 <span class="rank" style="background:var(--sun)">3</span></h4><div class="type">和食・天婦羅 · 食べログ3.45 · 座敷寬敞</div></div></div>
+        <div class="desc">沉穩和食、天丼定食，<b>座敷寬、團體家庭友善</b>。等位可預期，適合當穩定選項（避開さわやか的排隊風險）</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=瓢六亭+御殿場プレミアムアウトレット" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Hyorokutei+Gotemba" target="_blank">Apple 地圖</a></div>
+      </div>
+    </div>
+
+    <div class="subttl" style="color:var(--fuji)">🗻 河口湖・忍野（D2 晚餐 / D3 午餐 · 富士山名物餺飥・烏龍・蕎麥）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>ほうとう蔵 歩成 河口湖店 <span class="rank" style="background:var(--fuji)">1</span></h4><div class="type">餺飥得獎名店 · 食べログ高評 · ✅有個室可預約</div></div></div>
+        <div class="desc"><b>D2 晚餐最推：</b>「黃金餺飥」南瓜味噌湯頭、味くらべ大會3連霸。<b>有個室、可訂位，最適合 8 人團＋小孩</b>。假日晚餐無預約曾等45分，先訂</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=ほうとう蔵歩成+河口湖店" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0555728100">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>甲州ほうとう 小作 河口湖店 <span class="rank" style="background:var(--fuji)">2</span></h4><div class="type">餺飥・鄉土料理 · 食べログ3.6+ · 無休 · 團體友善</div></div></div>
+        <div class="desc">山梨連鎖名店，餺飥種類多(南瓜/豬肉/菌菇)。<b>座敷+桌席、空間大、8 人易安排</b>，適合帶長輩小孩</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=甲州ほうとう小作+河口湖店" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0555721181">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>ほうとう不動 河口湖駅前店 <span class="rank" style="background:var(--fuji)">3</span></h4><div class="type">餺飥 · 全年無休 · 駅前・翻桌快 · 單一¥1,320</div></div></div>
+        <div class="desc">白色雲朵造型名店的駅前分店，菜單就一種不動餺飥、蔬菜南瓜味噌鍋小孩好入口。<b>不接受訂位</b>，平日 8 人多可直接入座</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=ほうとう不動+河口湖駅前店" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Hoto+Fudo+Kawaguchiko" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>天祥庵（忍野）<span class="rank" style="background:var(--fuji)">4</span></h4><div class="type">手打蕎麥名店 · 忍野湧水 · 有寬座敷 · 🔴週三休</div></div></div>
+        <div class="desc"><b>D3 忍野午餐：</b>茅葺古民家、忍野湧水打的ぶっかけ蕎麥＋烤味噌香。有寬座敷、子連れ可。<b>賣完就關，早點到</b>。山路窄，自駕注意</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=天祥庵+忍野村忍草2848-2" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0555844119">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>忍野 池本茶屋 <span class="rank" style="background:var(--fuji)">5</span></h4><div class="type">蕎麥・餺飥・邊走邊吃 · 忍野八海正中心</div></div></div>
+        <div class="desc">位在忍野八海正中央，<b>現烤草餅、八海霜淇淋、まる天磯揚</b>邊走邊吃。逛八海順路解決午餐與零食，<b>小孩最愛草餅＋霜淇淋</b></div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=池本茶屋+忍野八海" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0555841009">📞</a></div>
+      </div>
+    </div>
+
+    <div class="subttl" style="color:var(--sakura)">🍣 築地場外市場（D4 早餐 · 建議 7:00–10:00 到）</div>
+    <div class="note" style="margin:0 0 10px">市場守則：<b>禁邊走邊吃</b>（店前/店內用餐）、嬰兒車可寄「ぷらっと築地」案內所、<b>牽好小孩分散行動</b>。多數店<b>週三＋週日公休</b>、14:00–15:00 前收攤。</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>すしざんまい 本店 <span class="rank" style="background:var(--sakura)">1</span></h4><div class="type">握壽司 · 24H全年無休 · ¥2,000–4,000 · 座位多</div></div></div>
+        <div class="desc"><b>8 人團最好安排</b>：座位多、有中文菜單、24 小時，不怕撲空或排不到大桌</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=すしざんまい+築地本店" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Sushizanmai+Tsukiji" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>山長 玉子燒 <span class="rank" style="background:var(--sakura)">2</span></h4><div class="type">現烤玉子燒串 ¥200 · 6:00–15:30 · 無休</div></div></div>
+        <div class="desc">排隊最長那家玉子燒，現烤香甜、¥200 一份，<b>小孩最愛</b>，隊伍消化快</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=山長+築地+玉子焼" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Yamacho+Tsukiji" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>おにぎり屋 丸豊 <span class="rank" style="background:var(--sakura)">3</span></h4><div class="type">海鮮飯糰 ¥200 · 🔴週三日休</div></div></div>
+        <div class="desc"><b>溏心蛋飯糰小孩超愛</b>，種類多、可外帶到座位吃。人氣高</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=おにぎり屋丸豊+築地" target="_blank">Google 導航</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>まぐろや黒銀 本店 <span class="rank" style="background:var(--sakura)">4</span></h4><div class="type">鮪魚生魚片/丼 · 排隊名店 · 🔴週三(四)休</div></div></div>
+        <div class="desc">大塊鮪魚 CP 高，海鮮控必吃。約 8:00–14:30</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=まぐろや黒銀+築地" target="_blank">Google 導航</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>そらつき <span class="rank" style="background:var(--sakura)">5</span></h4><div class="type">草莓大福・草莓冰 · ¥600–1,000</div></div></div>
+        <div class="desc">草莓控小孩最愛的甜點收尾，草莓大福、草莓霜淇淋</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=そらつき+築地場外" target="_blank">Google 導航</a></div>
+      </div>
+    </div>
+
+    <div class="subttl" style="color:#7c3aed">🏮 淺草橋／淺草（住宿步行圈）＋ 原宿新宿</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>水新菜館（淺草橋）<span class="rank" style="background:#7c3aed">1</span></h4><div class="type">町中華・勾芡炒麵 · 在地名店 · 午¥1,000級</div></div></div>
+        <div class="desc">淺草橋代表町中華，招牌<b>あんかけ焼きそば(勾芡炒麵)</b>，小孩接受度高。座位有限，8 人先電話問</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=水新菜館+浅草橋" target="_blank">Google 導航</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>洋食 大吉（淺草橋）<span class="rank" style="background:#7c3aed">2</span></h4><div class="type">家庭洋食 · 駅步1分 · 午¥1,000級</div></div></div>
+        <div class="desc">奶油燉雞＋炸肉餅套餐，口味溫和<b>適合小孩</b>。地下店、公休先確認</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=洋食大吉+浅草橋" target="_blank">Google 導航</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>駒形 前川 淺草本店 <span class="rank" style="background:#7c3aed">3</span></h4><div class="type">江戶前鰻魚飯老舖 · 食べログ3.6+ · ✅有個室/河景</div></div></div>
+        <div class="desc">想吃正式和食一餐可選，<b>有包廂＋隅田川景，適合團體長輩</b>。午¥5,000+、晚¥8,000+</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=駒形前川+浅草本店+駒形2-1-29" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Komagata+Maekawa" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>南國酒家 原宿本店 <span class="rank" style="background:#7c3aed">4</span></h4><div class="type">日式中華 · 65年老店 · ✅有個室 · 原宿站2分</div></div></div>
+        <div class="desc"><b>近明治神宮最適合本團：</b>五目勾芡炒麵、餃子等中式菜色<b>小孩接受度高</b>，個室可容 8 人。午¥2,000+</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=南国酒家+原宿本店+神宮前" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Nangokushuka+Harajuku" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>和牛焼肉 土古里 新宿 NOWA店 <span class="rank" style="background:#7c3aed">5</span></h4><div class="type">和牛燒肉 · 有兒童餐・包廂 · 新宿東南口1分 · 基本無休</div></div></div>
+        <div class="desc">與淺草土古里同系統，<b>新宿當午餐或收尾很方便</b>。有兒童餐、嬰兒車可入、包廂。午¥2,000/晚宴會¥5,000起</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=土古里+新宿NOWAビル店" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0353621151">📞</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAFE ============ -->
+  <section id="cafe">
+    <div class="secttl"><span class="ico">☕</span><h2>咖啡 · 甜點</h2></div>
+    <p style="font-size:12.5px;color:var(--sub);margin:-4px 0 14px">富士山景觀咖啡＋東京藏前咖啡一級戰區 · 挑空間大、好帶小孩的</p>
+
+    <div class="subttl" style="color:var(--fuji)">🗻 富士山景（河口湖・D2/D3）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>大石公園 OISHI PARK CAFE <span class="rank" style="background:var(--fuji)">1</span></h4><div class="type">湖景咖啡/輕食 · Google3.7–4.0 · 免費大停車場</div></div></div>
+        <div class="desc"><b>最強富士山正面湖景</b>：2F 大窗正對河口湖＋富士山，1F 有蛋三明治、霜淇淋。<b>空間大好帶推車與小孩、團體可分桌</b>，旁邊即花海與兒童遊具</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=大石公園+河口湖自然生活館" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0555768230">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>Lawson 河口湖駅前店（富士山便利店）<span class="rank" style="background:var(--fuji)">★</span></h4><div class="type">爆紅打卡點 · 24H · 免費</div></div></div>
+        <div class="desc">全球爆紅「富士山剛好停在 Lawson 藍招牌上」構圖。<b>下車即拍、帶小孩快閃最適合</b>。⚠️ 請勿佔用馬路/停車場，官方已呼籲勿擾住戶</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=ローソン+河口湖駅前店" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Lawson+Kawaguchiko+Station" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>LAKE BAKE（大石公園旁）<span class="rank" style="background:var(--fuji)">2</span></h4><div class="type">麵包/咖啡 · Google3.6–3.9 · 🔴週三・第2/4週四休</div></div></div>
+        <div class="desc">河口湖代表麵包店，露台望湖與富士山、現烤麵包。空間偏小，8 人建議<b>外帶到大石公園草地吃</b>。<b style="color:#b91c1c">⚠️ 週三＋第2/4週四休 → D2(8/26)、D3(8/27)兩天可能都休，先查或改買別家</b></div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=LAKE+BAKE+河口湖+大石" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0555767585">📞</a></div>
+      </div>
+    </div>
+
+    <div class="subttl" style="color:#0891b2">🏯 小田原・箱根（D1–D2 沿途）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>ベーカリー&amp;テーブル箱根 <span class="rank" style="background:#0369a1">1</span></h4><div class="type">麵包・咖啡 · 食べログ3.59 · 元箱根港 · 足湯席</div></div></div>
+        <div class="desc"><b>1F 足湯邊吃麵包（小孩超愛）</b>、2F 咖啡、3F 望蘆之湖絕景。預約不可、輪椅可、全席禁菸。人氣店留時間</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=ベーカリー&テーブル箱根+元箱根" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0460851530">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>きんじろうカフェ（小田原城旁）<span class="rank" style="background:#0891b2">2</span></h4><div class="type">咖啡 · 食べログ3.58 · 報德二宮神社內</div></div></div>
+        <div class="desc">D2 早上逛小田原城順路，露天座、金次郎拿鐵。<b>城觀光動線上，帶小孩露台輕鬆</b></div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=きんじろうカフェ+小田原+報徳二宮神社" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0465233246">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>一夜城 ヨロイヅカファーム <span class="rank" style="background:#0891b2">3</span></h4><div class="type">農園咖啡・甜點 · 石垣山(需開車)· 🔴週二休</div></div></div>
+        <div class="desc">名甜點師鎧塚俊彦的店，相模灣一望露台＋現烤麵包甜點。<b>自駕順遊、景觀佳</b>。<b style="color:#b91c1c">⚠️ 週二休 → D1(8/25)不營業；D2(8/26 週三)有開，自駕日順路可去</b></div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=一夜城ヨロイヅカファーム+小田原早川" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Yoroizuka+Farm+Odawara" target="_blank">Apple 地圖</a></div>
+      </div>
+    </div>
+
+    <div class="subttl" style="color:#7c3aed">☕ 東京・藏前咖啡一級戰區（住宿步行/一站）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>Dandelion Chocolate 藏前 <span class="rank" style="background:#7c3aed">1</span></h4><div class="type">Bean-to-bar巧克力 · 食べログ3.74(藏前第1) · ¥600–1,000</div></div></div>
+        <div class="desc"><b>藏前必訪、最適合團體+小孩：</b>昭和倉庫改建、2 樓挑高開闊<b>空間大</b>。藏前限定熱巧克力¥690。離住宿近</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=Dandelion+Chocolate+蔵前4-14-6" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Dandelion+Chocolate+Kuramae" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>ペリカンカフェ Pelican <span class="rank" style="background:#7c3aed">2</span></h4><div class="type">名店麵包 · 食べログ3.70 · 🔴週日假日休</div></div></div>
+        <div class="desc">淺草老麵包舖直營，招牌<b>炭烤紅豆吐司¥850</b>。常需排隊候位，早去。田原町/藏前之間</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=ペリカンカフェ+台東区寿3-9-11" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Pelican+Cafe+Asakusa" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>クラマエカヌレ Kuramae Canelé <span class="rank" style="background:#7c3aed">3</span></h4><div class="type">現烤可露麗 · ¥700級 · 1F外帶/2F座</div></div></div>
+        <div class="desc">散步邊買現烤可露麗，<b>小孩喜歡</b>。1 樓外帶、2 樓歐風座位</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=クラマエカヌレ+蔵前" target="_blank">Google 導航</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>喫茶 半月 <span class="rank" style="background:#7c3aed">4</span></h4><div class="type">台灣主理人喫茶 · 食べログ3.59 · 季節泡芙¥720</div></div></div>
+        <div class="desc">復古美學名店、季節泡芙。<b>座位少 8 人不易同桌</b>，適合分組小坐或大人輪流</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=喫茶半月+蔵前" target="_blank">Google 導航</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>ETiAM KURAMAE <span class="rank" style="background:#7c3aed">5</span></h4><div class="type">手沖咖啡 · 每日11:00–19:00 · 藏前站1分</div></div></div>
+        <div class="desc">皮件品牌開的咖啡，古董家具挑高空間、2 樓露台，子供可。手沖¥600、起司蛋糕¥500</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=ETiAM+KURAMAE+蔵前" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0338642655">📞</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KIDS ============ -->
+  <section id="kids">
+    <div class="secttl"><span class="ico">🧒</span><h2>適合小孩的地方</h2></div>
+    <p style="font-size:12.5px;color:var(--sub);margin:-4px 0 14px">3 歲＋12 歲都能玩 · 門票/時間已查證，出發前一天再確認公休</p>
+
+    <div class="subttl" style="color:var(--fuji)">🗻 富士山周邊（D2–D3）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>富士山全景纜車（天上山公園）<span class="rank" style="background:var(--fuji)">1</span></h4><div class="type">纜車/展望 · Google4.0+ · 往復大人¥1,000/小學生¥500/未就學免費</div></div></div>
+        <div class="desc">3 分鐘登標高1,075m 展望台，360°富士山＋河口湖。「かちかち山」狸貓兔子主題、絕景鞦韆。<b>3歲免費、12歲半價，全家最適合</b>。8:30–17:00、天氣差停駛，晴天優先</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=富士山パノラマロープウェイ+淺川1163-1" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Mt+Fuji+Panoramic+Ropeway" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>大石公園（河口湖自然生活館）<span class="rank" style="background:var(--fuji)">2</span></h4><div class="type">花公園/湖景 · Google4.2–4.4 · 免費 · 免費停車150台</div></div></div>
+        <div class="desc"><b>最省力又最好拍、免費</b>：湖畔花街道（夏薰衣草、秋掃帚草紅葉）＋富士山＋河口湖同框。<b>有鞦韆/沙坑/溜滑梯遊具</b>，旁邊即咖啡麵包店，3歲12歲都合適</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=大石公園+河口湖" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Oishi+Park+Kawaguchiko" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>忍野八海 <span class="rank" style="background:var(--fuji)">3</span></h4><div class="type">湧泉名勝(世界遺產構成) · Google4.0–4.2 · 免費</div></div></div>
+        <div class="desc">8 個富士雪水湧泉、鈷藍「湧池」、逆富士「鏡池」。<b>平緩好走、幼童友善</b>（水池邊留意3歲）。可餵鯉魚、草餅霜淇淋。案內所有免費輪椅、尿布台。底抜池入館大人¥300</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=忍野八海" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Oshino+Hakkai" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>河口湖 音樂與森林美術館 <span class="rank" style="background:var(--fuji)">4</span></h4><div class="type">音樂盒美術館/庭園 · Google4.2–4.4 · 平日大人¥1,800起 · 🔴週二三休</div></div></div>
+        <div class="desc">歐風庭園望富士山、自動演奏管風琴/音樂盒、水舞表演，<b>小孩會喜歡</b>。門票偏高每人都要買。<b style="color:#b91c1c">⚠️ D2(8/26 週三)公休 → 要去請排 D3(8/27 週四)有開</b>。可當雨天備案</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=河口湖オルゴールの森美術館" target="_blank">Google 導航</a><a class="btn btn-tel" href="tel:0555204111">📞</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>富士急樂園／Thomas Land（選配・需整天）<span class="rank" style="background:var(--fuji)">★</span></h4><div class="type">遊樂園 · 入園免費+設施券 · Thomas Land券大人¥3,700/幼兒¥1,500</div></div></div>
+        <div class="desc"><b>⚠️ 年齡落差大、需整天</b>：3歲玩 Thomas Land 12 項親子設施、12歲玩大型雲霄飛車。建議只買 Thomas Land 券給幼兒、大人買個別券輪流。本行程 D2/D3 較滿，若要去需另排一天</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=富士急ハイランド" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Fuji-Q+Highland" target="_blank">Apple 地圖</a></div>
+      </div>
+    </div>
+
+    <div class="subttl" style="color:#0891b2">🏯 小田原・箱根（D1–D2）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>小田原城（天守閣）<span class="rank" style="background:#0891b2">1</span></h4><div class="type">城/展望 · 大人¥1,000/小中¥300/未就學免費 · 9:00–17:00 · 🔴12月第2週三</div></div></div>
+        <div class="desc">天守展望台望相模灣。<b>12歲推 NINJA 館（體驗型・另¥500）</b>、3歲適合城內散策＋甲冑試穿¥500。⚠️ こども遊園地(小火車)目前休園中。城內無停車場，停周邊收費場</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=小田原城" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Odawara+Castle" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>箱根園水族館 <span class="rank" style="background:#0369a1">2</span></h4><div class="type">水族館 · 大人¥1,600/兒童(4歲–小學)¥800 · 9:00–16:30 · 全年無休</div></div></div>
+        <div class="desc"><b>3歲12歲都大滿足的核心點、天候不問</b>：海拔723m 高所水族館、貝加爾海豹秀、潛水員餵食秀，附設可愛動物區。若箱根天氣差是最佳備案。停車312台¥1,000</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=箱根園水族館+元箱根139" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Hakone-en+Aquarium" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>蘆之湖遊覽船 <span class="rank" style="background:#0369a1">3</span></h4><div class="type">遊船 · 周遊40分大人¥2,400/小人¥1,200 · 約9:20–16:00</div></div></div>
+        <div class="desc">360°展望甲板、有兒童空間，船上望鳥居與富士山。<b>新船脫鞋可放鬆、子連れ好評</b>。15人以上團體有折扣</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=芦ノ湖遊覧船+元箱根港" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Lake+Ashi+Cruise" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>小田原こどもの森公園 わんぱくらんど <span class="rank" style="background:#0891b2">4</span></h4><div class="type">大型公園 · 免費 · 約9:00–16:30 · 駅約20分車程</div></div></div>
+        <div class="desc"><b>免費玩一天、CP超高</b>：大型溜滑梯、吊橋、繩索攀爬、園內周遊小火車(部分收費)。3–12歲都能放電。腹地大要走路</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=小田原こどもの森公園わんぱくらんど" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Odawara+Wanpaku+Land" target="_blank">Apple 地圖</a></div>
+      </div>
+    </div>
+
+    <div class="subttl" style="color:var(--sakura)">🏮 東京市區（D4 · 淺草橋周邊）</div>
+    <div class="reco-grid">
+      <div class="reco">
+        <div class="top"><div><h4>葛西臨海水族園（D4已排）<span class="rank" style="background:var(--sakura)">1</span></h4><div class="type">水族館 · 一般¥700/小學6年級以下免費 · 9:30–17:00 · 🔴週三</div></div></div>
+        <div class="desc">2,200 噸黑鮪魚迴游大水槽超震撼、4 種企鵝，<b>小孩免費(小學以下)、3歲12歲都愛</b>。旁邊有大摩天輪、海濱公園野餐。淺草橋搭JR約35–45分</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=葛西臨海水族園" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Kasai+Rinkai+Aquarium" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>淺草花屋敷 <span class="rank" style="background:var(--sakura)">2</span></h4><div class="type">日本最古遊樂園 · 入園大人¥1,600/兒童¥800/0–4歲免費 · 淺草寺後1分</div></div></div>
+        <div class="desc"><b>D4 順遊淺草最佳：</b>1853年開業、日本最古雲霄飛車、旋轉木馬、天鵝船、日式鬼屋。<b>3歲和12歲都有適玩設施</b>、可自由進出去吃飯。離住宿近(淺草站5分)</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=浅草花やしき" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Asakusa+Hanayashiki" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>teamLab Planets 豊洲 <span class="rank" style="background:var(--sakura)">3</span></h4><div class="type">沉浸數位藝術 · 成人¥3,600/4–12歲¥1,500/3歲以下免費 · ⚠️預約制</div></div></div>
+        <div class="desc">赤腳沉浸式水中光影藝術，2025 擴建超適合親子。<b>務必線上先買票</b>、幼兒牽好、<b>備替換衣物(會濕)</b>。淺草橋約30–40分</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=teamLab+Planets+TOYOSU" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=teamLab+Planets+Toyosu" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>東京晴空塔 Skytree <span class="rank" style="background:var(--sakura)">4</span></h4><div class="type">展望塔 · 天望甲板¥1,800起(浮動)/6歲以下免費 · 10:00–22:00</div></div></div>
+        <div class="desc">350m/450m 展望、透明玻璃地板，晴空街道 300+ 店有<b>寶可夢中心、龍貓</b>＋墨田水族館。<b>雨天備案佳</b>。淺草橋約15–20分</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=東京スカイツリー" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Tokyo+Skytree" target="_blank">Apple 地圖</a></div>
+      </div>
+      <div class="reco">
+        <div class="top"><div><h4>上野動物園 <span class="rank" style="background:var(--sakura)">5</span></h4><div class="type">動物園 · 一般¥600/小學6年級以下免費 · 9:30–17:00 · 🔴週一</div></div></div>
+        <div class="desc">北極熊、鯨頭鸛、企鵝等，<b>小孩免費</b>。⚠️ 大貓熊已於2026/1月返還中國、目前無貓熊，先跟小孩說明。淺草橋搭JR約10分</div>
+        <div class="btns"><a class="btn btn-g" href="https://www.google.com/maps/search/?api=1&query=上野動物園" target="_blank">Google 導航</a><a class="btn btn-a" href="https://maps.apple.com/?q=Ueno+Zoo" target="_blank">Apple 地圖</a></div>
+      </div>
+    </div>
+
+    <div class="note" style="margin:14px 0 0">
+      <b>🗺️ D4 動線提醒：</b>葛西臨海(最東)＋明治神宮/新宿(最西)＋淺草，一天全跑很趕。<b>建議取捨：</b>早上築地早餐 →（水族園 <b>或</b> 明治神宮擇一）→ 下午淺草(花屋敷/雷門) → 晚上淺草土古里燒肉。動線最順、晚餐就在住宿圈。teamLab／晴空塔是雨天親子強備案。
+    </div>
+  </section>
+
+  <!-- ============ 提醒 ============ -->
+  <section id="tips">
+    <div class="secttl"><span class="ico">📌</span><h2>必看提醒</h2></div>
+    <details class="faq" open>
+      <summary>📅 8/25–29 公休對照（避免撲空）</summary>
+      <div class="body">
+        <b>行程日：</b>D1 8/25<b>（二）</b>· D2 8/26<b>（三）</b>· D3 8/27<b>（四）</b>· D4 8/28<b>（五）</b>· D5 8/29（六）<br><br>
+        <b style="color:#b91c1c">⚠️ D2 週三 地雷：</b><br>
+        ・<b>河口湖 音樂盒美術館</b>（週二三休）→ D2 這天別排，<b>改 D3 週四去</b>（有開）<br>
+        ・<b>LAKE BAKE</b>（週三＋第2/4週四休）→ <b>D2、D3 兩天都休</b>，河口湖麵包改買別家或大石公園 café<br><br>
+        <b style="color:#b45309">⚠️ D3 週四 注意：</b><br>
+        ・<b>小田原おでん本店</b>（週四傾向公休）→ D3 晚餐<b>別選它</b>，改<b>だるま料理店</b>（週四有開，只有座敷週三休）或天成園<br>
+        ・<b>あしのこ茶屋</b>（週四傾向休・季節變動）→ 但這是 D2 週三午餐，<b>D2 有開 ✅</b><br>
+        ・天祥庵（平常週三休、<b>8月無休</b>）→ D3 週四 ✅ 有開<br><br>
+        <b style="color:#15803d">✅ D4 週五 全部OK：</b>築地（多週三日休）、葛西臨海水族園（週三休）、上野動物園（週一休）、ペリカンカフェ（週日假日休）— 週五通通有開，是安排市區大點的好日子<br><br>
+        <b>D1 週二：</b>だるま料理店 ✅（晚餐 OK）；一夜城咖啡（週二休）這天別排。<br>
+        <span style="color:#b91c1c">※ 餺飥/蕎麥店「賣完就打烊」、公休易臨時變動，出發前一天再打電話或看官網確認最保險。</span>
+      </div>
+    </details>
+    <details class="faq">
+      <summary>🚗 日本自駕必看（D1–D3）</summary>
+      <div class="body">
+        <b>證件：</b>台灣駕照正本 ＋ <b>日文譯本</b>（監理站/JAF 辦，缺一不可）、護照。<br>
+        <b>靠左行駛</b>、駕駛在右、雨刷與方向燈相反（起步易搞錯）。<br>
+        <b>兒童座椅：</b>3 歲務必坐（取車時跟租車公司確認/加訂）；12 歲視身高，一般 135cm 以下建議增高墊。<br>
+        <b>ETC 卡</b>：跑高速方便，取車時租借。<br>
+        <b>加油</b>：還車前加滿（滿油還），記得留收據。<br>
+        <b>停車</b>：景點多為收費停車場，先看好費率與紅線。山路（箱根/富士）易起霧、彎多，放慢。
+      </div>
+    </details>
+    <details class="faq">
+      <summary>🚄 新幹線 / 交通</summary>
+      <div class="body">
+        <b>D1</b> 品川 19:43 → 小田原 20:09；<b>D3</b> 小田原 19:44 → 東京 20:18。<br>
+        3 歲免票（不佔位），12 歲需<b>兒童票</b>。指定席建議先劃位（8 人坐一起）。<br>
+        東京市區用 <b>Suica/PASMO（或手機西瓜卡）</b>最方便。淺草橋 ↔ 羽田：都營淺草線直通京急，不用轉車。
+      </div>
+    </details>
+    <details class="faq">
+      <summary>🗻 富士山看得到嗎？</summary>
+      <div class="body">
+        富士山常被雲遮，<b>清晨（日出後 1–2 小時）與冬季晴天</b>機率最高。D2 傍晚御殿場、D3 上午河口湖/忍野是主要機會。出發前查 <b>富士山即時攝影機</b>與天氣，機動調整拍照順序。看不到也有替代玩法（湖畔、纜車、神社）。
+      </div>
+    </details>
+    <details class="faq">
+      <summary>👶 帶小孩 tips（3歲・12歲）</summary>
+      <div class="body">
+        <b>3 歲：</b>背巾/輕便推車（新倉山階梯多、忍野好推）、備零食、餐廳選有兒童椅/白飯。<br>
+        <b>12 歲：</b>大景點都能走，水族館、纜車、outlet 摩天輪會喜歡。<br>
+        水族館、忍野八海、outlet、淺草花屋敷 是 2 個年齡都討喜的點。餐廳訂位註明有孩童。
+      </div>
+    </details>
+    <details class="faq">
+      <summary>📝 待補資訊清單</summary>
+      <div class="body">
+        ① ANA 去/回程<b>航班編號＋航廈</b><br>
+        <s>② 出發日期</s> ✅ 已確定 8/25–29，公休已對照（見上）<br>
+        ③ <b>租車</b>公司/車型/車數/取還車時間<br>
+        ④ 天成園、河口湖住宿的<b>訂房確認</b>與含餐與否<br>
+        ⑤ Clover House <b>check-in 方式</b>與房間分配<br>
+        補齊後我再更新到對應卡片。
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    東京・富士五日 · ✈️ ANA · 3 家庭 6 大 2 小 🗻<br>
+    資料整合自 Google 評論與在地推薦 · 營業時間與評分會變動，出發前請以 Google Maps 即時資訊為準 <span class="heart">♥</span>
+  </footer>
+
+</main>
+
+<nav class="quickbar">
+  <div class="wrap">
+    <a href="#day1"><span class="qi">✈️</span>D1</a>
+    <a href="#day2"><span class="qi">🗻</span>D2</a>
+    <a href="#day3"><span class="qi">⛩️</span>D3</a>
+    <a href="#day4"><span class="qi">🏮</span>D4</a>
+    <a href="#eat"><span class="qi">🍜</span>美食</a>
+    <a href="#kids"><span class="qi">🧒</span>親子</a>
+    <a href="#recapCard"><span class="qi">🎬</span>回顧</a>
+  </div>
+</nav>
+
+<div class="player" id="player">
+  <div class="pbar">
+    <button id="playerClose">✕ 關閉</button>
+    <span style="font-weight:700">🎬 東京回顧</span>
+    <span style="width:60px"></span>
+  </div>
+  <canvas id="recapCanvas" width="1080" height="1080"></canvas>
+  <div class="status" id="playerStatus"></div>
+</div>
+
+<input type="file" id="photoInput" accept="image/*" multiple style="display:none" />
+
+<script>
+  // Scroll-spy for sticky day nav
+  const navLinks = [...document.querySelectorAll('.daynav a')];
+  const map = {day1:0, day2:1, day3:2, day4:3, day5:4, eat:5, cafe:6, kids:7};
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && map[e.target.id]!==undefined){
+        navLinks.forEach(l=>l.classList.remove('active'));
+        navLinks[map[e.target.id]]?.classList.add('active');
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  ['day1','day2','day3','day4','day5','eat','cafe','kids'].forEach(id=>{
+    const el=document.getElementById(id); if(el) obs.observe(el);
+  });
+
+  // ===== Check-off feature (with localStorage) =====
+  (function(){
+    const KEY = 'tokyo-trip-done-v1';
+    let store = {};
+    try { store = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ store = {}; }
+    const ICON = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+    const cards = [...document.querySelectorAll('.tl .item .card')];
+    const pdone = document.getElementById('pdone');
+    const ptotal = document.getElementById('ptotal');
+    const pfill = document.getElementById('pfill');
+    ptotal.textContent = cards.length;
+
+    function idOf(card, i){
+      const h = card.querySelector('h3');
+      const t = h ? h.textContent.trim().replace(/\s+/g,'') : '';
+      return (i+1)+'_'+t.slice(0,24);
+    }
+    function refresh(){
+      let n=0;
+      cards.forEach(c=>{ if(c.classList.contains('done')) n++; });
+      pdone.textContent = n;
+      pfill.style.width = cards.length ? (n/cards.length*100)+'%' : '0';
+    }
+    cards.forEach((card,i)=>{
+      const key = idOf(card,i);
+      const item = card.closest('.item');
+      const btn = document.createElement('button');
+      btn.className = 'chk';
+      btn.setAttribute('aria-label','標記完成');
+      btn.innerHTML = ICON;
+      if(store[key]){ card.classList.add('done'); item && item.classList.add('done'); }
+      btn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        const done = card.classList.toggle('done');
+        item && item.classList.toggle('done', done);
+        if(done) store[key]=1; else delete store[key];
+        try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e){}
+        refresh();
+      });
+      card.appendChild(btn);
+    });
+    refresh();
+
+    // reco 卡片打勾（獨立 key，不計入行程進度）— 對動態插入的卡片也生效
+    function wireReco(card, i){
+      const h=card.querySelector('h4');
+      const t=h?h.textContent.trim().replace(/\s+/g,''):'';
+      const key='reco_'+i+'_'+t.slice(0,24);
+      const btn=document.createElement('button');
+      btn.className='chk'; btn.setAttribute('aria-label','標記去過');
+      btn.innerHTML=ICON;
+      if(store[key]) card.classList.add('done');
+      btn.addEventListener('click',(e)=>{
+        e.stopPropagation();
+        const done=card.classList.toggle('done');
+        if(done) store[key]=1; else delete store[key];
+        try{ localStorage.setItem(KEY,JSON.stringify(store)); }catch(e){}
+      });
+      card.appendChild(btn);
+    }
+    window.__wireReco = wireReco;
+    [...document.querySelectorAll('.reco')].forEach(wireReco);
+
+    document.getElementById('preset').addEventListener('click', ()=>{
+      if(!confirm('確定清除所有勾選紀錄？（含美食/咖啡/親子打卡）')) return;
+      store = {};
+      try { localStorage.removeItem(KEY); } catch(e){}
+      cards.forEach(c=>{ c.classList.remove('done'); const it=c.closest('.item'); it&&it.classList.remove('done'); });
+      [...document.querySelectorAll('.reco')].forEach(c=>c.classList.remove('done'));
+      refresh();
+    });
+  })();
+
+  // ===== Photos + Recap video =====
+  (function(){
+    const DB='tokyo-photos', STORE='photos'; let db=null;
+    function open(){return new Promise((res,rej)=>{const r=indexedDB.open(DB,1);
+      r.onupgradeneeded=()=>{r.result.createObjectStore(STORE,{keyPath:'id',autoIncrement:true});};
+      r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error);});}
+    function tx(mode){return db.transaction(STORE,mode).objectStore(STORE);}
+    function addPhoto(o){return new Promise((res,rej)=>{const r=tx('readwrite').add(o);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});}
+    function delPhoto(id){return new Promise((res,rej)=>{const r=tx('readwrite').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error);});}
+    function allPhotos(){return new Promise((res,rej)=>{const r=tx('readonly').getAll();r.onsuccess=()=>res(r.result||[]);r.onerror=()=>rej(r.error);});}
+
+    function compress(file, max){return new Promise((res)=>{
+      const img=new Image(); const url=URL.createObjectURL(file);
+      img.onload=()=>{ let{width:w,height:h}=img; const s=Math.min(1,max/Math.max(w,h));
+        w=Math.round(w*s); h=Math.round(h*s);
+        const c=document.createElement('canvas'); c.width=w; c.height=h;
+        c.getContext('2d').drawImage(img,0,0,w,h);
+        URL.revokeObjectURL(url); res(c.toDataURL('image/jpeg',0.82)); };
+      img.src=url; });}
+
+    const phcount=document.getElementById('phcount');
+    const photoInput=document.getElementById('photoInput');
+    let pending=null;
+
+    function titleOf(card){const h=card.querySelector('h3,h4');return h?h.textContent.trim().replace(/\s+/g,' '):'';}
+    function keyOf(card,i){return (i+1)+'_'+titleOf(card).replace(/\s+/g,'').slice(0,24);}
+
+    async function renderPhotos(card){
+      const key=card.dataset.phkey;
+      const photos=(await allPhotos()).filter(p=>p.key===key);
+      let wrap=card.querySelector('.photos');
+      if(!wrap){wrap=document.createElement('div');wrap.className='photos';
+        card.querySelector('.addph').before(wrap);}
+      wrap.innerHTML='';
+      photos.forEach(p=>{
+        const d=document.createElement('div');d.className='ph';
+        d.innerHTML='<img src="'+p.data+'" alt="'+(p.label||'旅程照片').replace(/"/g,'')+'"><button class="del" aria-label="刪除照片">✕</button>';
+        d.querySelector('.del').onclick=async(e)=>{e.stopPropagation();
+          if(!confirm('刪除這張照片？'))return; await delPhoto(p.id); renderPhotos(card); updateRecap();};
+        wrap.appendChild(d);
+      });
+    }
+    async function updateRecap(){
+      const all=await allPhotos();
+      phcount.textContent=all.length;
+    }
+
+    const freeBtn=document.getElementById('freeCheckin');
+    if(freeBtn){
+      freeBtn.addEventListener('click',()=>{
+        const name=prompt('打卡地點名稱（例：Lawson富士山、路上發現的店）');
+        if(!name||!name.trim())return;
+        pending={key:'free_'+name.trim().slice(0,30),label:name.trim(),cardEl:null};
+        photoInput.click();
+      });
+    }
+
+    photoInput.addEventListener('change', async()=>{
+      const files=photoInput.files; if(!files||!files.length||!pending)return;
+      let fail=0;
+      for(const f of files){
+        try{
+          const data=await compress(f,1280);
+          await addPhoto({key:pending.key,label:pending.label,data:data});
+        }catch(e){ fail++; }
+      }
+      try{ if(pending.cardEl) await renderPhotos(pending.cardEl); await updateRecap(); }catch(e){}
+      if(pending && !pending.cardEl && !fail) alert('✅ 已為「'+pending.label+'」加入 '+files.length+' 張照片，會進回顧影片');
+      if(fail) alert(fail+' 張照片處理失敗，請再試一次');
+      photoInput.value=''; pending=null;
+    });
+
+    // 對外提供：給動態插入的 reco 卡片掛上「加照片」鈕
+    window.__wirePhoto=function(card,i){
+      const key=keyOf(card,i); card.dataset.phkey=key;
+      const btn=document.createElement('button');
+      btn.className='addph'; btn.innerHTML='📷 去過了 · 加照片';
+      btn.onclick=(e)=>{e.stopPropagation();
+        pending={key:key,label:titleOf(card),cardEl:card}; photoInput.click();};
+      card.appendChild(btn);
+      if(db) renderPhotos(card);
+    };
+
+    open().then(async(database)=>{
+      db=database;
+      const cards=[...document.querySelectorAll('.tl .item .card, .reco')];
+      cards.forEach((card,i)=>{
+        const key=keyOf(card,i); card.dataset.phkey=key;
+        const btn=document.createElement('button');
+        btn.className='addph'; btn.innerHTML='📷 去過了 · 加照片';
+        btn.onclick=(e)=>{e.stopPropagation();
+          pending={key:key,label:titleOf(card),cardEl:card}; photoInput.click();};
+        card.appendChild(btn);
+        renderPhotos(card);
+      });
+      await updateRecap();
+    }).catch(()=>{});
+
+    // ---- Recap slideshow / recording ----
+    const canvas=document.getElementById('recapCanvas');
+    const ctx=canvas.getContext('2d');
+    const player=document.getElementById('player');
+    const pstatus=document.getElementById('playerStatus');
+    const W=canvas.width,H=canvas.height;
+
+    function loadImg(src){return new Promise(r=>{const im=new Image();im.onload=()=>r(im);im.src=src;});}
+    function drawCover(im){ const r=Math.max(W/im.width,H/im.height);
+      const w=im.width*r,h=im.height*r; ctx.drawImage(im,(W-w)/2,(H-h)/2,w,h); }
+    function caption(text,alpha){
+      ctx.save(); ctx.globalAlpha=alpha;
+      const g=ctx.createLinearGradient(0,H-260,0,H); g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.75)');
+      ctx.fillStyle=g; ctx.fillRect(0,H-260,W,260);
+      ctx.fillStyle='#fff'; ctx.font='bold 52px "Noto Sans TC",sans-serif'; ctx.textAlign='center';
+      ctx.fillText(text.slice(0,18),W/2,H-90); ctx.restore();
+    }
+    function titleCard(alpha){
+      ctx.fillStyle='#1d4ed8'; ctx.fillRect(0,0,W,H);
+      ctx.save(); ctx.globalAlpha=alpha; ctx.fillStyle='#fff'; ctx.textAlign='center';
+      ctx.font='bold 84px "Noto Sans TC",sans-serif'; ctx.fillText('東京・富士五日',W/2,H/2-30);
+      ctx.font='40px "Noto Sans TC",sans-serif'; ctx.fillText('✈️ ANA · 3 家庭同遊',W/2,H/2+50);
+      ctx.font='32px "Noto Sans TC",sans-serif'; ctx.fillText('🗻 我們的回顧',W/2,H/2+120); ctx.restore();
+    }
+
+    let playing=false;
+    async function runRecap(recorder){
+      const photos=await allPhotos();
+      if(!photos.length){ alert('還沒有照片喔！沿途先在景點按「📷 加照片」'); return false; }
+      playing=true; player.classList.add('show');
+      const imgs=[]; for(const p of photos){ imgs.push({im:await loadImg(p.data),label:p.label}); }
+      const PER=1800, FADE=400;
+      if(recorder) recorder.start();
+      const introMs=1600;
+      await animate(introMs,(t)=>{ const a=Math.min(1,t/400); titleCard(a); });
+      for(const s of imgs){
+        await animate(PER,(t)=>{
+          ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H);
+          drawCover(s.im);
+          if(t<FADE){ctx.save();ctx.globalAlpha=1-t/FADE;ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);ctx.restore();}
+          else if(t>PER-FADE){ctx.save();ctx.globalAlpha=1-(PER-t)/FADE;ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);ctx.restore();}
+          caption(s.label, t<FADE?t/FADE:1);
+        });
+        if(!playing) break;
+      }
+      await animate(1500,(t)=>{ titleCard(1); ctx.save();ctx.globalAlpha=Math.min(1,t/400);
+        ctx.fillStyle='#fff';ctx.font='36px "Noto Sans TC",sans-serif';ctx.textAlign='center';
+        ctx.fillText('謝謝大家，下次見！',W/2,H/2+200);ctx.restore(); });
+      if(recorder) recorder.stop();
+      playing=false;
+      return true;
+    }
+    function animate(dur,draw){return new Promise(res=>{
+      let start=null;
+      function frame(ts){ if(start==null)start=ts; const t=ts-start;
+        draw(Math.min(t,dur));
+        if(t<dur && playing){ requestAnimationFrame(frame); } else res(); }
+      requestAnimationFrame(frame);
+    });}
+
+    document.getElementById('playRecap').onclick=()=>{ pstatus.textContent='播放中…'; runRecap(null).then(()=>{pstatus.textContent='';}); };
+    document.getElementById('playerClose').onclick=()=>{ playing=false; player.classList.remove('show'); };
+
+    document.getElementById('dlRecap').onclick=async()=>{
+      if(!canvas.captureStream || !window.MediaRecorder){ alert('此瀏覽器不支援影片錄製，請用最新版 Chrome/Safari'); return; }
+      const stream=canvas.captureStream(30);
+      let mime='video/webm;codecs=vp9'; if(!MediaRecorder.isTypeSupported(mime)) mime='video/webm;codecs=vp8';
+      if(!MediaRecorder.isTypeSupported(mime)) mime='video/webm';
+      const chunks=[]; const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:6000000});
+      rec.ondataavailable=e=>{ if(e.data.size)chunks.push(e.data); };
+      rec.onstop=()=>{ const blob=new Blob(chunks,{type:'video/webm'});
+        const url=URL.createObjectURL(blob); const a=document.createElement('a');
+        a.href=url; a.download='東京回顧.webm'; a.click(); URL.revokeObjectURL(url);
+        pstatus.textContent='✅ 影片已下載'; setTimeout(()=>{player.classList.remove('show');pstatus.textContent='';},1500); };
+      pstatus.textContent='🔴 錄製中，請勿關閉…';
+      await runRecap(rec);
+    };
+  })();
+</script>
+</body>
+</html>
