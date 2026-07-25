@@ -1,3 +1,4 @@
 favicon.ico
 .playwright-mcp/
 *.log
+_test.png
