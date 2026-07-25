@@ -51,14 +51,31 @@
     padding:5px 12px;border-radius:999px;font-size:12.5px;font-weight:500}
 
   /* ===== Day nav (sticky) ===== */
-  .daynav{position:sticky;top:0;z-index:50;background:rgba(244,246,251,.85);
-    backdrop-filter:blur(12px);padding:10px 0;border-bottom:1px solid var(--line);overflow-x:auto}
-  .daynav .wrap{display:flex;gap:7px;min-width:max-content}
-  .daynav a{flex:0 0 auto;text-align:center;padding:9px 12px;border-radius:12px;font-size:13px;
-    font-weight:700;background:var(--card);border:1px solid var(--line);color:var(--sub);
-    text-decoration:none;transition:.2s}
-  .daynav a .d{display:block;font-size:11px;font-weight:500;opacity:.8}
-  .daynav a.active,.daynav a:active{background:var(--brand);color:#fff;border-color:var(--brand)}
+  /* ===== 收合式 day nav ===== */
+  .daynav{position:sticky;top:0;z-index:50;background:rgba(244,246,251,.92);
+    backdrop-filter:blur(12px);padding:8px 0;border-bottom:1px solid var(--line)}
+  .daynav .wrap{position:relative}
+  /* 收合狀態的當前頁按鈕（整條可點展開）*/
+  .navtoggle{display:flex;align-items:center;gap:10px;width:100%;background:var(--card);
+    border:1px solid var(--line);border-radius:12px;padding:10px 14px;cursor:pointer;
+    font-family:inherit;font-size:14px;font-weight:800;color:var(--ink);text-align:left}
+  .navtoggle .cur{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .navtoggle .cur small{font-weight:500;color:var(--sub);margin-left:6px;font-size:12px}
+  .navtoggle .car{flex-shrink:0;color:var(--brand);font-weight:900;transition:transform .2s}
+  .daynav.open .navtoggle .car{transform:rotate(180deg)}
+  /* 展開的選單 */
+  .navmenu{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:60;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
+    padding:8px;grid-template-columns:repeat(3,1fr);gap:6px}
+  .daynav.open .navmenu{display:grid}
+  .navmenu a{text-align:center;padding:10px 6px;border-radius:10px;font-size:13px;font-weight:700;
+    background:var(--bg);border:1px solid var(--line);color:var(--sub);text-decoration:none;transition:.15s}
+  .navmenu a .d{display:block;font-size:10.5px;font-weight:500;opacity:.8;margin-top:1px}
+  .navmenu a.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .navmenu a:active{transform:scale(.97)}
+  /* 點外面收合用的遮罩 */
+  .navmask{display:none;position:fixed;inset:0;z-index:55}
+  .daynav.open .navmask{display:block}
 
   section{margin-top:26px}
   /* ===== Tab 分頁切換：預設隱藏，只顯示 .active 那一頁 ===== */
@@ -66,6 +83,19 @@
   section.panel.active{display:block}
   @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   @media (prefers-reduced-motion: reduce){ section.panel{animation:none} }
+  /* 「現在時段」高亮的那張卡 */
+  .card.nowcard{box-shadow:0 0 0 3px var(--accent),var(--shadow);position:relative}
+  .nowflag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;color:#fff;
+    background:var(--accent);padding:3px 9px;border-radius:999px;margin-bottom:8px}
+  @keyframes nowpulse{0%{box-shadow:0 0 0 0 rgba(244,63,126,.5),var(--shadow)}
+    70%{box-shadow:0 0 0 10px rgba(244,63,126,0),var(--shadow)}100%{box-shadow:0 0 0 0 rgba(244,63,126,0),var(--shadow)}}
+  .card.nowcard{animation:nowpulse 1.8s ease-out 2}
+  @media (prefers-reduced-motion: reduce){ .card.nowcard{animation:none} }
+  /* 「今天」提示條 */
+  .todaybar{background:linear-gradient(135deg,var(--accent),#fb7185);color:#fff;border-radius:12px;
+    padding:9px 13px;font-size:12.5px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:7px}
+  .todaybar .x{margin-left:auto;background:rgba(255,255,255,.25);border:none;color:#fff;border-radius:8px;
+    padding:3px 9px;font-size:11px;font-weight:700;cursor:pointer}
   .day-head{display:flex;align-items:center;gap:12px;margin:8px 0 16px}
   .day-pill{flex-shrink:0;width:54px;height:54px;border-radius:16px;display:grid;place-items:center;
     color:#fff;font-weight:900;line-height:1;text-align:center;box-shadow:var(--shadow)}
@@ -268,21 +298,30 @@
   </div>
 </header>
 
-<nav class="daynav">
+<nav class="daynav" id="daynav">
   <div class="wrap">
-    <a href="#day1" class="active">D1<span class="d">羽田→小田原</span></a>
-    <a href="#day2">D2<span class="d">箱根→河口湖</span></a>
-    <a href="#day3">D3<span class="d">忍野→東京</span></a>
-    <a href="#day4">D4<span class="d">東京市區</span></a>
-    <a href="#day5">D5<span class="d">返程</span></a>
-    <a href="#eat">美食<span class="d">口袋名單</span></a>
-    <a href="#cafe">咖啡<span class="d">甜點</span></a>
-    <a href="#kids">親子<span class="d">帶小孩</span></a>
-    <a href="#tips">提醒<span class="d">必看</span></a>
+    <button class="navtoggle" id="navtoggle" aria-expanded="false">
+      <span class="cur" id="navcur">D1 <small>羽田→小田原</small></span>
+      <span class="car">▾</span>
+    </button>
+    <div class="navmenu" id="navmenu">
+      <a href="#day1" class="active">D1<span class="d">羽田→小田原</span></a>
+      <a href="#day2">D2<span class="d">箱根→河口湖</span></a>
+      <a href="#day3">D3<span class="d">忍野→東京</span></a>
+      <a href="#day4">D4<span class="d">東京市區</span></a>
+      <a href="#day5">D5<span class="d">返程</span></a>
+      <a href="#eat">美食<span class="d">口袋名單</span></a>
+      <a href="#cafe">咖啡<span class="d">甜點</span></a>
+      <a href="#kids">親子<span class="d">帶小孩</span></a>
+      <a href="#tips">提醒<span class="d">必看</span></a>
+    </div>
   </div>
+  <div class="navmask" id="navmask"></div>
 </nav>
 
 <main class="wrap">
+
+  <div id="todaybar" class="todaybar" style="margin-top:18px;display:none"></div>
 
   <div class="progress" style="margin-top:18px">
     <div class="pt"><div>✅ 行程完成度</div><div><span id="pdone">0</span> / <span id="ptotal">0</span></div></div>
@@ -1171,24 +1210,30 @@
 <input type="file" id="photoInput" accept="image/*" multiple style="display:none" />
 
 <script>
-  // ===== Tab 分頁切換（點 tab 只顯示該頁，捲回頂部）=====
-  const navLinks = [...document.querySelectorAll('.daynav a')];
+  // ===== Tab 分頁切換（收合式選單，點 tab 只顯示該頁）=====
+  const navLinks = [...document.querySelectorAll('.navmenu a')];
   const panels = [...document.querySelectorAll('section.panel')];
-  const daynav = document.querySelector('.daynav');
+  const daynav = document.getElementById('daynav');
+  const navcur = document.getElementById('navcur');
+  function setNav(open){ daynav.classList.toggle('open', open); document.getElementById('navtoggle').setAttribute('aria-expanded', open?'true':'false'); }
   function showPanel(id, scroll){
     const panel = document.getElementById(id);
     if(!panel || !panel.classList.contains('panel')) return;
     panels.forEach(p=>p.classList.remove('active'));
     panel.classList.add('active');
     navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+id));
-    // 把選中的 tab 捲進可視範圍（橫向）
+    // 更新收合按鈕上顯示的「當前頁」文字
     const activeTab = navLinks.find(l=>l.getAttribute('href')==='#'+id);
-    activeTab && activeTab.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+    if(activeTab){ const clone=activeTab.cloneNode(true); const d=clone.querySelector('.d'); navcur.innerHTML = clone.childNodes[0].textContent + (d?' <small>'+d.textContent+'</small>':''); }
+    setNav(false); // 選完自動收合
     if(scroll!==false) window.scrollTo({top:0,behavior:'smooth'});
     if(history.replaceState) history.replaceState(null,'','#'+id);
   }
-  // daynav 與底部 quickbar 的連結都改成切換
-  [...document.querySelectorAll('.daynav a, .quickbar a')].forEach(a=>{
+  // 展開/收合選單
+  document.getElementById('navtoggle').addEventListener('click',()=>setNav(!daynav.classList.contains('open')));
+  document.getElementById('navmask').addEventListener('click',()=>setNav(false));
+  // daynav 選單與底部 quickbar 的連結都改成切換
+  [...document.querySelectorAll('.navmenu a, .quickbar a')].forEach(a=>{
     const href = a.getAttribute('href')||'';
     if(href.startsWith('#')){
       const id = href.slice(1);
@@ -1201,10 +1246,67 @@
       }
     }
   });
-  // 開頁時依 hash 顯示對應頁（沒有就 day1）
-  (function(){
-    const h = (location.hash||'').slice(1);
-    if(h && document.getElementById(h)?.classList.contains('panel')) showPanel(h, false);
+  // ===== 開頁時：優先「今天那一頁」，並捲到當前時段的卡片 =====
+  // 行程日期對照（2026）：8/25→day1 ... 8/29→day5
+  const TRIP = { '2026-08-25':'day1','2026-08-26':'day2','2026-08-27':'day3','2026-08-28':'day4','2026-08-29':'day5' };
+  const DAY_LABEL = { day1:'D1 羽田→小田原', day2:'D2 箱根→河口湖', day3:'D3 忍野→東京', day4:'D4 東京市區', day5:'D5 返程' };
+
+  function localYMD(d){ const y=d.getFullYear(),m=('0'+(d.getMonth()+1)).slice(-2),dd=('0'+d.getDate()).slice(-2); return y+'-'+m+'-'+dd; }
+  // 測試鉤子：?now=2026-08-27T13:00 可覆寫「現在」（僅供驗證，正式使用不帶此參數即為真實時間）
+  function getNow(){ const q=new URLSearchParams(location.search).get('now'); const d=q?new Date(q):new Date(); return isNaN(d)?new Date():d; }
+  // 從卡片時間文字推當日分鐘數：優先抓「時:分」，否則用中文時段詞估算；都沒有回 null
+  function cardMinutes(card){
+    const t = card.querySelector('.time'); if(!t) return null;
+    const txt = t.textContent;
+    const m = txt.match(/([0-2]?\d):([0-5]\d)/);
+    if(m) return parseInt(m[1],10)*60 + parseInt(m[2],10);
+    // 模糊時段 → 估一個代表時間（分）
+    if(/(清晨|一早|日出)/.test(txt)) return 6*60;
+    if(/早餐/.test(txt)) return 7*60+30;
+    if(/上午|午前/.test(txt)) return 9*60;
+    if(/中午|午餐|正午|午前後/.test(txt)) return 12*60;
+    if(/午後|下午/.test(txt)) return 14*60;
+    if(/傍晚|黃昏/.test(txt)) return 17*60;
+    if(/晚餐|晚上|夜|入住/.test(txt)) return 19*60;
+    return null;
+  }
+  // 在指定 panel 內找「當前時段」的卡片：最後一張開始時間 <= now 的卡；都還沒到就第一張
+  function findNowCard(panelId, nowMin){
+    const cards = [...document.querySelectorAll('#'+panelId+' .tl .item .card')];
+    let target=null;
+    for(const c of cards){ const mn=cardMinutes(c); if(mn==null) continue; if(mn<=nowMin) target=c; }
+    if(!target){ target = cards.find(c=>cardMinutes(c)!=null) || cards[0]; }
+    return target;
+  }
+  function highlightNow(panelId){
+    const now = getNow();
+    const card = findNowCard(panelId, now.getHours()*60+now.getMinutes());
+    if(!card) return;
+    document.querySelectorAll('.card.nowcard').forEach(c=>{c.classList.remove('nowcard'); const f=c.querySelector('.nowflag'); if(f)f.remove();});
+    card.classList.add('nowcard');
+    if(!card.querySelector('.nowflag')){ const flag=document.createElement('span'); flag.className='nowflag'; flag.textContent='⏰ 現在時段'; card.querySelector('.time')?.after(flag); }
+    setTimeout(()=>{ card.scrollIntoView({behavior:'smooth',block:'center'}); }, 350);
+  }
+
+  (function initToday(){
+    const hash = (location.hash||'').slice(1);
+    // 分享連結指定某頁 → 尊重 hash，不強制跳今天
+    if(hash && document.getElementById(hash)?.classList.contains('panel')){ showPanel(hash, false); return; }
+    const today = localYMD(getNow());
+    const todayPanel = TRIP[today];
+    if(todayPanel){
+      showPanel(todayPanel, false);
+      // 顯示「今天」提示條，可關閉切回總覽（D1）
+      const bar = document.getElementById('todaybar');
+      bar.style.display='flex';
+      bar.innerHTML = '📍 今天是行程第 '+todayPanel.replace('day','')+' 天 · '+DAY_LABEL[todayPanel]+'，已自動跳到今天'
+        + '<button class="x" id="todayClose">看全部</button>';
+      document.getElementById('todayClose').onclick = ()=>{ bar.style.display='none'; };
+      highlightNow(todayPanel);
+    } else {
+      // 非行程期間（旅行前/後）→ 顯示 D1，不打擾
+      showPanel('day1', false);
+    }
   })();
 
   // ===== Check-off feature (with localStorage) =====
