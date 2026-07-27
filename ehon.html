@@ -36,7 +36,10 @@
 
   /* 頂列：標題 + 頁碼 */
   .top{display:flex;align-items:center;gap:10px;flex-shrink:0}
-  .top .logo{font-weight:900;font-size:15px;letter-spacing:.5px}
+  .top .backhome{font-size:12px;font-weight:800;color:var(--ink);text-decoration:none;
+    border:2px solid var(--ink);border-radius:999px;padding:3px 10px;flex-shrink:0}
+  .top .backhome:active{transform:translate(1px,1px)}
+  .top .logo{font-weight:900;font-size:14px;letter-spacing:.3px}
   .top .logo .dot{color:var(--pop)}
   /* Day 標籤膠囊（紅底黑框，童趣） */
   .daypill{margin-left:auto;display:inline-flex;align-items:baseline;gap:6px;
@@ -113,6 +116,7 @@
 
 <div class="book">
   <div class="top">
+    <a class="backhome" href="index.html" aria-label="回行程">‹ 行程</a>
     <div class="logo">🐕 小柴大冒險<span class="dot">.</span></div>
     <div class="daypill" id="daypill"><b id="dayLabel">封面</b><span id="daySub"></span></div>
     <div class="pageno"><span id="cur">1</span> / <span id="tot">12</span></div>
