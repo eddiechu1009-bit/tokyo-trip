@@ -38,8 +38,15 @@
   .top{display:flex;align-items:center;gap:10px;flex-shrink:0}
   .top .logo{font-weight:900;font-size:15px;letter-spacing:.5px}
   .top .logo .dot{color:var(--pop)}
-  .top .pageno{margin-left:auto;font-size:13px;font-weight:700;color:var(--sub);
-    border:2px solid var(--ink);border-radius:999px;padding:3px 11px}
+  /* Day 標籤膠囊（紅底黑框，童趣） */
+  .daypill{margin-left:auto;display:inline-flex;align-items:baseline;gap:6px;
+    background:var(--pop);color:#fff;border:2.5px solid var(--ink);border-radius:999px;
+    padding:4px 13px;box-shadow:2px 2px 0 var(--ink)}
+  .daypill b{font-size:14px;font-weight:900;letter-spacing:.3px}
+  .daypill span{font-size:11px;font-weight:700;opacity:.95}
+  .daypill span:empty{display:none}
+  .top .pageno{margin-left:8px;font-size:12px;font-weight:700;color:var(--sub);
+    border:2px solid var(--line);border-radius:999px;padding:3px 9px;flex-shrink:0}
 
   /* 頁面卡 */
   .page{flex:1;display:flex;flex-direction:column;min-height:0;padding:14px 0 8px}
@@ -106,7 +113,8 @@
 
 <div class="book">
   <div class="top">
-    <div class="logo">🐕 小柴的東京大冒險<span class="dot">.</span></div>
+    <div class="logo">🐕 小柴大冒險<span class="dot">.</span></div>
+    <div class="daypill" id="daypill"><b id="dayLabel">封面</b><span id="daySub"></span></div>
     <div class="pageno"><span id="cur">1</span> / <span id="tot">12</span></div>
   </div>
 
@@ -139,31 +147,31 @@
 </div>
 
 <script>
-  // ===== 繪本內容（圖檔放 img/p0.png … img/p11.png；沒有時顯示 emoji 佔位）=====
+  // ===== 繪本內容（圖檔放 img/p0.jpg … img/p11.jpg；沒有時顯示 emoji 佔位）=====
   const PAGES = [
-    {cls:'cover', img:'img/p0.png',  emoji:'🗻', tag:'封面圖',
+    {cls:'cover', img:'img/p0.jpg',  emoji:'🗻', tag:'封面圖', day:'封面',
       big:'小柴的<span class="em">東京</span>大冒險 🗻', small:'2026 / 8/25–8/29 · 一起去日本玩五天！'},
-    {cls:'', img:'img/p1.png',  emoji:'✈️', tag:'Day1 · 出發',
+    {cls:'', img:'img/p1.jpg',  emoji:'✈️', tag:'Day1 · 出發', day:'Day 1', sub:'8/25 出發',
       big:'我們坐大飛機，<span class="em">飛到日本</span>囉！✈️', small:'搭 ANA 從松山飛羽田，晚上到小田原泡溫泉。'},
-    {cls:'', img:'img/p2.png',  emoji:'♨️', tag:'Day1 · 小田原溫泉',
+    {cls:'', img:'img/p2.jpg',  emoji:'♨️', tag:'Day1 · 小田原溫泉', day:'Day 1', sub:'小田原',
       big:'晚上住小田原，<span class="em">泡溫泉</span>暖呼呼～♨️', small:'小田原在海邊，有城堡和好吃的魚板。今晚住車站旁的溫泉旅館。'},
-    {cls:'', img:'img/p3.png',  emoji:'🏯', tag:'Day2 · 小田原城',
+    {cls:'', img:'img/p3.jpg',  emoji:'🏯', tag:'Day2 · 小田原城', day:'Day 2', sub:'小田原城',
       big:'哇～<span class="em">好大的城堡</span>！🏯', small:'小田原城有高高的天守閣，還有忍者！爬上去可以看到大海。'},
-    {cls:'', img:'img/p4.png',  emoji:'⛩️', tag:'Day2 · 箱根神社',
+    {cls:'', img:'img/p4.jpg',  emoji:'⛩️', tag:'Day2 · 箱根神社', day:'Day 2', sub:'箱根神社',
       big:'紅色的大門，<span class="em">站在水裡</span>耶！⛩️', small:'箱根神社的紅色鳥居站在蘆之湖上，坐船還能看到富士山。'},
-    {cls:'', img:'img/p5.png',  emoji:'🗻', tag:'Day2 · 河口湖',
+    {cls:'', img:'img/p5.jpg',  emoji:'🗻', tag:'Day2 · 河口湖', day:'Day 2', sub:'河口湖',
       big:'<span class="em">富士山</span>好高好漂亮！🗻', small:'今晚睡在富士山旁邊的河口湖，早上起床就能看到大大的富士山。'},
-    {cls:'', img:'img/p6.png',  emoji:'🚡', tag:'Day3 · 纜車 & 忍野八海',
+    {cls:'', img:'img/p6.jpg',  emoji:'🚡', tag:'Day3 · 纜車 & 忍野八海', day:'Day 3', sub:'纜車・忍野',
       big:'坐<span class="em">纜車</span>飛上山頂！這裡的水好清～🚡', small:'搭纜車上天上山看富士山全景；忍野八海是富士山的雪水變成的清泉。'},
-    {cls:'', img:'img/p7.png',  emoji:'🚄', tag:'Day3 · 進東京',
+    {cls:'', img:'img/p7.jpg',  emoji:'🚄', tag:'Day3 · 進東京', day:'Day 3', sub:'進東京',
       big:'坐新幹線，<span class="em">咻～進東京</span>！🚄', small:'還了車，坐快快的新幹線到東京，住在淺草橋連住兩晚。'},
-    {cls:'', img:'img/p8.png',  emoji:'🐟', tag:'Day4 · 水族館 & 淺草',
+    {cls:'', img:'img/p8.jpg',  emoji:'🐟', tag:'Day4 · 水族館 & 淺草', day:'Day 4', sub:'水族館・淺草',
       big:'好多魚！還有<span class="em">企鵝</span>！🐟🐧', small:'早上看葛西臨海水族館的大鮪魚和企鵝，下午去淺草雷門大燈籠。'},
-    {cls:'', img:'img/p9.png',  emoji:'🥩', tag:'Day4 · 一起吃燒肉',
+    {cls:'', img:'img/p9.jpg',  emoji:'🥩', tag:'Day4 · 一起吃燒肉', day:'Day 4', sub:'燒肉',
       big:'大家一起吃<span class="em">燒肉</span>，好香啊～🥩', small:'晚上三個家庭一起吃日本燒肉，烤得香噴噴，豆豆最開心！'},
-    {cls:'', img:'img/p10.png', emoji:'👋', tag:'Day5 · 回家',
+    {cls:'', img:'img/p10.jpg', emoji:'👋', tag:'Day5 · 回家', day:'Day 5', sub:'8/29 回家',
       big:'謝謝日本，<span class="em">我們下次再來</span>！👋', small:'8/29 從羽田機場搭飛機回台灣，帶著滿滿的回憶回家。'},
-    {cls:'back', img:'img/p11.png', emoji:'❤️', tag:'封底',
+    {cls:'back', img:'img/p11.jpg', emoji:'❤️', tag:'封底', day:'完',
       big:'這是我們的<span class="em">東京回憶</span> ❤️', small:'2026 夏天 · 三家人 · 六大二小的旅行'},
   ];
 
@@ -174,6 +182,7 @@
     big:document.getElementById('big'), small:document.getElementById('small'),
     cur:document.getElementById('cur'), tot:document.getElementById('tot'),
     prev:document.getElementById('prev'), next:document.getElementById('next'), dots:document.getElementById('dots'),
+    dayLabel:document.getElementById('dayLabel'), daySub:document.getElementById('daySub'),
   };
   el.tot.textContent = PAGES.length;
 
@@ -191,6 +200,8 @@
     el.small.textContent = p.small;
     el.emoji.textContent = p.emoji;
     el.tag.textContent = p.tag;
+    el.dayLabel.textContent = p.day || '';
+    el.daySub.textContent = p.sub || '';
     // 圖：載入成功才顯示，失敗維持 emoji 佔位
     el.art.classList.remove('ready');
     el.art.removeAttribute('src'); el.art.src='';
